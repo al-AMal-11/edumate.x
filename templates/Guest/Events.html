@@ -1,0 +1,29 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Events</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'guest_home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Events</li>
+                    </ul>
+                </div>
+        
+            </div>
+            <div id="calendar-simple" class="calendar-container"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2020 Edumate.X</p>
+    </footer>
+
+</div>
+{% include 'includes/events.html' %}
+
+
+{% endblock %}

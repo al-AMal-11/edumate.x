@@ -1,0 +1,183 @@
+{% extends 'FontEND/base.html' %}
+
+{% block body %}
+<div class="main-container ">
+   <div id="blog-content-19">
+      <section class="blog-post">
+         <div class="blog-post__title bg--secondary">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                     <h1>{{blog.title}}</h1>
+                     <div class="blog-post__author">
+                        <span>
+                        <em>by </em>
+                        </span>
+                        <span class="h6">{{blog.author}}</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-10 col-sm-offset-1">
+                  <div class=' module module-pictures ' id='module-pictures'  data-mw-title="Picture Gallery" rel="content"   data-type="pictures"   parent-module="pictures"   parent-module-id="module-pictures"  >
+                     <script>mw.lib.require('material_icons');</script>
+                     <div class="text-center">
+                        <div id="mw-gallery-64351bb9b6c68">
+                           <div class="slider" data-paging="false">
+                              <ul class="slides">
+                                 {% for media in my_images %}
+                                 {% if '.jpg' in media.media_file.name|lower or '.jpeg' in media.media_file.name|lower or '.png' in media.media_file.name|lower %}
+                                    <li>
+                                       <img class="blog-post__hero box-shadow" alt="{{ media.title }}" src="{{ media.media_file.url }}">
+                                    </li>
+                                 {% elif '.mp4' in media.media_file.name|lower or '.mov' in media.media_file.name|lower or '.mkv' in media.media_file.name|lower %}
+                                    <li>
+                                       <video class="blog-post__hero box-shadow" alt="{{ media.title }}" controls>
+                                             <source src="{{ media.media_file.url }}" type="{{ 'video/' }}{{ media.media_file.name|slice:'-3:' }}">
+                                             Your browser does not support the video tag.
+                                       </video>
+                                    </li>
+                                 {% endif %}
+
+                              {% endfor %}
+                              
+                                 </ul>
+                                 
+                           </div>
+                        </div>
+                     </div>
+                     <script>
+                        gallery64351bb9b6c68 = [
+                                {image: "https://templates.microweber.com/dream/userfiles/media/content/uploaded/31-min.jpg", description: ""},
+                            {image: "https://templates.microweber.com/dream/userfiles/media/content/uploaded/32-min.jpg", description: ""},
+                            {image: "https://templates.microweber.com/dream/userfiles/media/content/uploaded/33-min.jpg", description: ""},
+                            {image: "https://templates.microweber.com/dream/userfiles/media/content/uploaded/34-min.jpg", description: ""},
+                                    ];
+                        mw.$(document).ready(function () {
+                            mr.sliders.documentReady($)
+                        })
+                     </script>
+                  </div>
+               </div>
+               <div class="col-sm-8 col-sm-offset-2">
+                  <div class="edit dropcap" field="content" rel="content">
+                     <p align="justify" class="element element-over" id="element_1512127253081">
+                        {% spaceless %}
+                            {{ blog.body|linebreaksbr }}
+                        {% endspaceless %}
+                    </p>
+                  </div>
+                  <hr>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12 text-center">
+                  <div class="blog-post__share">
+                     <h5>Share this article</h5>
+                     <div class=' module module-sharer '   data-mw-title="Sharer" id="share-post"   data-type="sharer"   parent-module="sharer"   parent-module-id="share-post"  >
+                        <script>mw.lib.require('font_awesome');</script>
+                        <div class="mw-social-share-links">
+                           <a class="btn btn--sm bg--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={% url 'blog_detail' blog.slug %}">
+                           <span class="btn__text"><i class="socicon-facebook"></i> Share on Facebook</span>
+                           </a>
+                           <a class="btn btn--sm bg--twitter" href="https://twitter.com/intent/tweet?text={{blog.title}} living&url={% url 'blog_detail' blog.slug %}" target="_blank">
+                           <span class="btn__text"><i class="socicon-twitter"></i> Share on Twitter</span>
+                           </a>
+                           <a class="btn btn--sm bg--googleplus" href="https://plus.google.com/share?url={% url 'blog_detail' blog.slug %}" target="_blank">
+                           <span class="btn__text"><i class="socicon-googleplus"></i> Share on GooglePlus</span>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                  <div class="blog-post__comments">
+                     <div class="edit" rel="content" field="comments">
+                        <div class=' module module-comments ' id='module-comments-19'  data-mw-title="Comments" data-content-id="19"   data-type="comments"   parent-module="comments"   parent-module-id="module-comments-19"  >
+                           <div class="row">
+                              <div class="comments" id="comments-list-module-comments-19">
+                                 <ul>
+                                    {% for comment in comments %}
+                                    <li id="comment-{{comment.id}}">
+                                       <div class="comment">
+                                          <div class="comment__text">
+                                          
+                                             <h5>
+                                                {{comment.sender_name }}                                                                                
+                                             </h5>
+                                             <span><em>{{comment.post_date}}<em></span>
+                                             <p>{{comment.body}}</p>
+                                          {% empty %}
+                                             <p>No comments yet.</p>
+                                             
+                                          </div>
+                                          <hr>
+                                       </div>
+                                    </li>
+                                    {% endfor %}
+                                 </ul>
+                              </div>
+                           </div>
+                           <div id="comments-module-comments-19">
+                              <form autocomplete="on" method='post' action='comment_text' class="comment__form form--square">
+                                 <input type="hidden" name="rel_id" value="19">
+                                 <input type="hidden" value="y5JROsfZKA9OgQESWJfEdoHUNoWITcn1Rll8uueU" name="_token">                <input type="hidden" name="rel" value="content">
+                                 <input type="hidden" name="module_id" value="module-comments-19">
+                                 <h6>Leave a comment</h6>
+                                 <div class="row">
+                                    <div class="col-sm-4">
+                                       <input placeholder="Your name" required type="text" name="comment_name">
+                                    </div>
+                                    
+                                    <div class="col-sm-4">
+                                       <input placeholder="Your email" required type="email" name="comment_email">
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-xs-12">
+                                       <textarea required placeholder="Comment" name="comment_body" style="height: 150px"></textarea>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-xs-12 col-md-8">
+                                       <div class=' module module-captcha ' id='module-comments-19-captcha'  data-mw-title="Captcha" parent-module-id="module-comments-19"   parent-module="comments"   data-type="captcha"  >
+                                          <div class="mw-ui-row">
+                                             <div class="mw-captcha" style="max-width: 400px; margin: 15px;">
+                                                <div class="form-group">
+                                                   <div class="captcha-holder">
+                                                      <div class="mw-ui-col" style="width: 100px;">
+                                                         <a href="javascript:;" class="tip" data-tip="Refresh captcha" data-tipposition="top-center">
+                                                         <img onclick="mw.tools.refresh_image(this);" onerror="this.onerror=null;mw.tools.refresh_image(this);" class="mw-captcha-img" id="captcha-cap64351bb9b75bf" src="https://templates.microweber.com/dream/api/captcha?w=100&h=60&uid=cap64351bb9b75bf64351bb9b7782&rand=7693&id=module-comments-19-captcha"/>
+                                                         </a>
+                                                      </div>
+                                                      <div class="mw-ui-col">
+                                                         <input name="captcha" type="text" required class="mw-captcha-input form-control" placeholder="Security code"/>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                       <button type="submit" class="btn btn--primary">Add comment</button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+</div>
+{% endblock body %}
+   

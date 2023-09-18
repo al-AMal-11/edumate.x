@@ -1,0 +1,63 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'BACKEND/assets/css/time_table.css' %}">
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Exams </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 't_home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Exams</li>
+                    </ul>
+                </div>
+        
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Start Time - End Time </th>
+                        <th>Subject</th>
+                        <th>Room Number</th>
+                        
+                        
+                       
+                    </tr>
+                </thead>
+            <tbody>
+              
+              {% for i in sta %}
+                
+
+                <tr>
+                <td id="sub">{{i.Date}}</td>
+                <td id="blank">{{i.StartTime}} - {{i.end_time}}</td>
+                <td id="box2">{{i.subject.Subject_Name}}</td>
+                <td id="box3">{{i.RoomNO}}</td>
+                
+
+               
+               
+                </tr>
+             {% endfor %}
+                      
+            </tbody>
+        </table>
+    
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2020 Edumate.X</p>
+    </footer>
+
+</div>
+      
+
+{% endblock%}
+
+      

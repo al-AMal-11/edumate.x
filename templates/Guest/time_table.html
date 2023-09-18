@@ -1,0 +1,186 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'BACKEND/assets/css/time_table.css' %}">
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Time Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'guest_home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Time Table</li>
+                    </ul>
+                </div>
+        
+            </div>
+            <table>
+            <thead>
+                <tr>
+
+                <td id="sub1">-----</td>
+                
+                {% for i in tt %}
+                
+                {% if i.Day == 'Sunday' %}
+                    
+               
+                    
+                 <td id="sub">{{i.start_time}} - {{i.end_time}}</td>
+                {% endif %}
+                {% endfor %}
+                
+                
+                </tr>
+            </thead>
+            <tbody>
+                 
+               
+            
+             <tr>
+                <td id="box1">Sunday</td>
+               
+                    {% for i in tt %}
+                     
+                    {% if i.Day == 'Sunday' %}
+                        
+                     
+                        
+                        {% if i.Subject != None %}
+                          <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                        {% else %}
+                          <td> OffTime</td>  
+                        {% endif %}
+                            
+                     
+                    {% else %}
+                    <td id="box1"> -----</td>
+                    {% endif %}  
+                      
+                    {% endfor %}
+                    
+                
+                </tr>
+                <tr>
+                <td id="box2">Monday</td>
+                {% for i in tt %}
+                        
+                    {% if i.Day == 'Monday' %}
+                        
+                        {% if i.Subject != None %}
+                          <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                        {% else %}
+                          <td> OffTime</td>  
+                        {% endif %}
+                            
+                    {% else %}
+                     <td id="box2"> -----</td>
+                    {% endif %}  
+                  
+                {% endfor %}
+                </tr>
+                <tr>
+                <td id="box3">Tuesday</td>
+                {% for i in tt %}
+                        
+                    {% if i.Day == 'Tuesday' %}
+                        
+                    
+                        
+                    {% if i.Subject != None %}
+                      <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                    {% else %}
+                        <td> OffTime</td>  
+                    {% endif %}
+                      
+                    {% else %}
+                     <td id="box3"> -----</td>
+                    {% endif %}  
+                  
+                {% endfor %}
+                </tr>
+                <tr>
+                <td id="box4">Wednesday</td>
+                {% for i in tt %}
+                        
+                    {% if i.Day == 'Wednesday' %}
+                        
+                    
+                        
+                    {% if i.Subject != None %}
+                        <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                    {% else %}
+                        <td> OffTime</td>  
+                    {% endif %}
+                      
+                    {% else %}
+                     <td id="box4"> -----</td>
+                    {% endif %}  
+                  
+                {% endfor %}
+                </tr>
+                <tr>
+                <td id="box5">Thursday</td>
+                {% for i in tt %}
+                        
+                    {% if i.Day == 'Thursday' %}
+                        
+                    
+                        
+                    {% if i.Subject != None %}
+                          <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                    {% else %}
+                          <td> OffTime</td>  
+                    {% endif %}
+                            
+                    {% else %}
+                     <td id="box5"> -----</td>
+                    {% endif %}  
+                  
+                {% endfor %}
+                </tr>
+                <tr>
+                <td id="s">Firday</td>
+                {% for i in tt %}
+                        
+                    {% if i.Day == 'Friday' %}
+                        
+                    
+                        
+                    {% if i.Subject != None %}
+                        <td id="box1">{{i.Subject.Subject_Name}}</td>
+
+                    {% else %}
+                        <td> OffTime</td>  
+                    {% endif %}
+                      
+                    {% else %}
+                     <td id="s"> -----</td>
+                    {% endif %}  
+                  
+                {% endfor %}
+                </tr>
+          
+            </tbody>
+        </table>
+    
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2020 Edumate.X</p>
+    </footer>
+
+</div>
+      
+
+{% endblock%}
+
+      

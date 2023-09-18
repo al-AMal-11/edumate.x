@@ -1,0 +1,203 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Leave Applications</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Leave Views</li>
+          </ul>
+        </div>
+        <div class="col-sm-14 mx-3">
+          <div class="card">
+            <div class="card-header">
+              All Applications
+            </div>
+
+            <div class="card-body">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#basictab1" data-toggle="tab">Staff</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#basictab2" data-toggle="tab">Guest</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#basictab3" data-toggle="tab">Teacher</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane show active" id="basictab1">
+                 {% for i in staff_leave %}  
+                  <div class="container">
+                    <div class="container-fluid">
+                     
+                         <hr>
+                          <a href="{% url 'hod_staffs_detail'  i.staff_id.id %}"
+                                        class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+                                        src="{{ i.staff_id.admin.profile_pic.url }}" alt="User Image"></a>
+                                        
+                                        <div class="container">
+                                           <p style="margin-left: 76%;">  {{i.leave_date}} </p>
+                                           
+                                           <p style="margin-left: 50%;">Sub : {{i.leave_subject}}</p>
+
+                                           <p>Dear Sir</p>
+
+                                           <i style="margin-left:9%;">{{i.Application}}</i>
+
+                                          <br>
+
+                                          <p style="margin-top: 5px;">Thanks and Regards,</p>
+
+                                          <b>{{i.staff_id.admin.first_name}}   {{i.staff_id.admin.last_name}}</b>
+                                        </div>
+                                        <hr>
+                                        
+                                        <ul class="nav justify-content-end">
+                                          <li class="nav-item">
+                                            <a class="nav-link text-danger" href="{% url 'hod_leave_view_staff_disapprove' status=i.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a class="nav-link text-success" href="{% url 'hod_leave_view_staff_approve' status=i.id  %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                          </li>
+                                          
+                                          
+                                        </ul>
+                                        
+                                      
+                        
+                    </div>
+
+
+  
+                  </div>
+                 {% endfor %} 
+
+                </div>
+                <div class="tab-pane show active" id="basictab3">
+                  {% for i in teacher_leave %}  
+                   <div class="container">
+                     <div class="container-fluid">
+                                            
+                          <hr>
+                           <a href="{% url 'hod_teacher_detail' i.staff_id.id %}"
+                                         class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+                                         src="{{ i.staff_id.admin.profile_pic.url }}" alt="User Image"></a>
+                                         
+                                         <div class="container">
+                                            <p style="margin-left: 76%;">  {{i.leave_date}} </p>
+                                            
+                                            <p style="margin-left: 50%;">Sub : {{i.leave_subject}}</p>
+ 
+                                            <p>Dear Sir</p>
+ 
+                                            <i style="margin-left:9%;">{{i.Application}}</i>
+ 
+                                           <br>
+ 
+                                           <p style="margin-top: 5px;">Thanks and Regards,</p>
+ 
+                                           <b>{{i.staff_id.admin.first_name}}   {{i.staff_id.admin.last_name}}</b>
+                                         </div>
+                                         <hr>
+                                         
+                                         <ul class="nav justify-content-end">
+                                           <li class="nav-item">
+                                             <a class="nav-link text-danger" href="{% url 'hod_leave_view_teacher_disapprove' status=i.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                           </li>
+                                           <li class="nav-item">
+                                             <a class="nav-link text-success" href="{% url 'hod_leave_view_teacher_approve' status=i.id  %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                           </li>
+                                           
+                                           
+                                         </ul>
+                                         
+                                       
+                         
+                     </div>
+ 
+ 
+   
+                   </div>
+                  {% endfor %} 
+ 
+                 </div>
+                <div class="tab-pane" id="basictab2">
+                  {% for i in student_leave%}  
+                    <div class="container">
+                      <div class="container-fluid">
+                                            
+                          <hr>
+                            <a href="{% url 'hod_student_detail' i.guest_id.id %}"
+                                          class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+                                          src="{{ i.guest_id.admin.profile_pic.url }}" alt="User Image"></a>
+                                          
+                                          <div class="container">
+                                            <p style="margin-left: 76%;">  {{i.leave_date}} </p>
+                                            
+                                            <p style="margin-left: 50%;">Sub : {{i.leave_subject}}</p>
+
+                                            <p>Dear Sir</p>
+
+                                            <i style="margin-left:9%;">{{i.Application}}</i>
+
+                                            <br>
+
+                                            <p style="margin-top: 5px;">Thanks and Regards,</p>
+
+                                            <b>{{i.guest_id.admin.first_name}}   {{i.guest_id.admin.last_name}}</b>
+                                          </div>
+                                          <hr>
+                                          <ul class="nav justify-content-end">
+                                          <li class="nav-item">
+                                            <a class="nav-link text-danger" href="{% url 'hod_leave_view_student_disapprove'  status=i.id  %} "><i class="fa fa-times" aria-hidden="true"></i></a>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a class="nav-link text-success" href="{% url 'hod_leave_view_student_approve'  status=i.id  %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                          </li>
+                                          
+                                          
+                                         </ul>
+                                          
+                                        
+                          
+                      </div>
+
+
+    
+                    </div>
+                  {% endfor %} 
+ 
+                  
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+</div>
+
+<footer>
+  <p>Copyright © 2020 Edumate.X</p>
+</footer>
+
+</div>
+{% endblock main %}

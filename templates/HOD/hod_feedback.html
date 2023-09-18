@@ -1,0 +1,422 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<style>
+  /* Style for the page title */
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Style for the breadcrumb navigation */
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.breadcrumb-item {
+  margin-right: 0.5rem;
+}
+
+.breadcrumb-item::before {
+  content: "\\00bb";
+  margin-right: 0.5rem;
+}
+
+/* Style for the card header */
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* Style for the card body */
+.card-body {
+  padding: 1rem;
+}
+
+/* Style for the feedback container */
+.container {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Style for the avatar */
+.avatar {
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Style for the feedback date */
+.container p:first-of-type {
+  margin-left: auto;
+  font-style: italic;
+}
+
+/* Style for the feedback subject */
+.container p:nth-of-type(2) {
+  margin-left: 50%;
+}
+
+/* Style for the feedback text */
+.container i {
+  margin-left: 9%;
+}
+
+/* Style for the feedback signature */
+.container b {
+  margin-top: 1rem;
+}
+
+/* Style for the feedback reply */
+.container i:last-of-type {
+  padding-left: 15%;
+}
+
+/* Style for the reply button */
+.btn {
+
+  width: 4rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.btn:hover {
+  background-color: #f8f9fa;
+  color: #dc3545;
+}
+
+.btn i {
+  font-size: 1rem;
+}
+
+</style>  
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">FeedBack</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Feedback Views</li>
+          </ul>
+        </div>
+       
+      </div>
+      <div class="col-sm-14 mx-3">
+        <div class="card">
+           <div class="card-header">
+              All Feedback
+           </div>
+           <div class="card-body">
+              <div id="accordion">
+                 <div class="card">
+                    <div class="card-header" id="staff-heading">
+                       <h5 class="mb-0">
+                          <button class="btn btn-primary" class="btn btn-link" data-toggle="collapse" data-target="#staff-collapse" aria-expanded="true" aria-controls="staff-collapse">
+                          Staff
+                          </button>
+                       </h5>
+                    </div>
+                    <div id="staff-collapse" class="collapse show" aria-labelledby="staff-heading" data-parent="#accordion">
+                       <div class="card-body">
+                          <ul class="nav nav-tabs">
+                             <li class="nav-item">
+                                <a class="nav-link active" href="#staff-feedback" data-toggle="tab">Feedback</a>
+                             </li>
+                          </ul>
+                          <div class="tab-content">
+                             <div class="tab-pane show active" id="staff-feedback">
+                                {% for i in staff_feedback %}
+                                <div class="container">
+                                   <div class="container-fluid">
+                                      <hr>
+                                      <a href="{% url 'hod_staffs_detail'  i.staff_id.id %}" class="avatar avatar-sm mr-2">
+                                      <img class="avatar-img rounded-circle" src="{{ i.staff_id.staff.profile_pic.url }}" alt="User Image">
+                                      </a>
+                                      <div class="container">
+                                         <p style="margin-left: 76%;">{{i.create_at}}</p>
+                                         <p style="margin-left: 50%;">Sub : {{i.feedback_subject}}</p>
+                                         <p>Dear Sir</p>
+                                         <i style="margin-left:9%;">{{i.feedback}}</i>
+                                         <br>
+                                         <p style="margin-top: 5px;">Thanks and Regards,</p>
+                                         <b>{{i.staff_id.staff.first_name}}   {{i.staff_id.staff.last_name}}</b>
+                                         <hr>
+                                         <p>reply:</p>
+                                         <i style='padding-left: 15% ;'>{{i.feedback_reply}}</i>
+                                      </div>
+                                      <hr>
+                                      <ul class="nav justify-content-end">
+                                         <li class="nav-item">
+                                            {% if i.feedback_reply == '' %}
+                                            <button data-toggle="modal" data-target="#exampleModalstaff-{{forloop.counter}}" type="button" class="btn text-danger">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                            </button>
+                                            {% else %}
+                                            <button type="button" class="btn text-danger">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                            </button>
+                                            {% endif %}
+                                         </li>
+                                      </ul>
+                                   </div>
+                                </div>
+                                {% endfor %}
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card">
+                    <div class="card-header" id="teacher-heading">
+                       <h5 class="mb-0">
+                          <button class="btn btn-primary" class="btn btn-link collapsed" data-toggle="collapse" data-target="#teacher-collapse" aria-expanded="false" aria-controls="teacher-collapse">
+                          Teacher
+                          </button>
+                       </h5>
+                    </div>
+                    <div id="teacher-collapse" class="collapse" aria-labelledby="teacher-heading" data-parent="#accordion">
+                       <div class="card-body">
+                          <ul class="nav nav-tabs">
+                             <li class="nav-item">
+                                <a class="nav-link active" href="#teacher-feedback" data-toggle="tab">Feedback</a>
+                             </li>
+                          </ul>
+                          <div class="tab-content">
+                             <div class="tab-pane show active" id="teacher-feedback">
+                                {% for i in teacher_feedback %}
+                                <div class="container">
+                                   <div class="container-fluid">
+                                      <hr>
+                                      <a href="{% url 'hod_teacher_detail' i.staff_id.id %}"" class="avatar avatar-sm mr-2">
+                                      <img class="avatar-img rounded-circle" src="{{ i.staff_id.admin.profile_pic.url }}" alt="User Image">
+                                      </a>
+                                      <div class="container">
+                                         <p style="margin-left: 76%;">{{i.create_at}}</p>
+                                         <p style="margin-left: 50%;">Sub : {{i.feedback_subject}}</p>
+                                         <p>Dear Sir/Madam</p>
+                                         <i style="margin-left:9%;">{{i.feedback}}</i>
+                                         <br>
+                                         <p style="margin-top: 5px;">Thanks and Regards,</p>
+                                         <b>{{i.teacher_id.teacher.first_name}} {{i.teacher_id.admin.last_name}}</b>
+                                         <hr>
+                                         <p>reply:</p>
+                                         <i style='padding-left: 15% ;'>{{i.feedback_reply}}</i>
+                                      </div>
+                                      <hr>
+                                      <ul class="nav justify-content-end">
+                                         <li class="nav-item">
+                                            {% if i.feedback_reply == '' %}
+                                            <button data-toggle="modal" data-target="#exampleModalteacher-{{forloop.counter}}" type="button" class="btn text-danger">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                            </button>
+                                            {% else %}
+                                            <button type="button" class="btn text-danger">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                            </button>
+                                            {% endif %}
+                                         </li>
+                                      </ul>
+                                   </div>
+                                </div>
+                                {% endfor %}
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card">
+                  <div class="card-header" id="guest-heading">
+                     <h5 class="mb-0">
+                        <button class="btn btn-primary" class="btn btn-link collapsed" data-toggle="collapse" data-target="#guest-collapse" aria-expanded="false" aria-controls="guest-collapse">
+                        Guest
+                        </button>
+                     </h5>
+                  </div>
+                  <div id="guest-collapse" class="collapse" aria-labelledby="guest-heading" data-parent="#accordion">
+                     <div class="card-body">
+                        <ul class="nav nav-tabs">
+                           <li class="nav-item">
+                              <a class="nav-link active" href="#teacher-feedback" data-toggle="tab">Feedback</a>
+                           </li>
+                        </ul>
+                        <div class="tab-content">
+                           <div class="tab-pane show active" id="teacher-feedback">
+                              {% for i in guest_feedback %}
+                              <div class="container">
+                                 <div class="container-fluid">
+                                    <hr>
+                                    <a href="{% url 'hod_student_detail' i.guest_id.id %}" class="avatar avatar-sm mr-2">
+                                    <img class="avatar-img rounded-circle" src="{{ i.guest_id.admin.profile_pic.url }}" alt="User Image">
+                                    </a>
+                                    <div class="container">
+                                       <p style="margin-left: 76%;">{{i.create_at}}</p>
+                                       <p style="margin-left: 50%;">Sub : {{i.feedback_subject}}</p>
+                                       <p>Dear Sir/Madam</p>
+                                       <i style="margin-left:9%;">{{i.feedback}}</i>
+                                       <br>
+                                       <p style="margin-top: 5px;">Thanks and Regards,</p>
+                                       <b>{{i.guest_id.admin.first_name}} {{i.guest_id.admin.last_name}}</b>
+                                       <hr>
+                                       <p>reply:</p>
+                                       <i style='padding-left: 15% ;'>{{i.feedback_reply}}</i>
+                                    </div>
+                                    <hr>
+                                    <ul class="nav justify-content-end">
+                                       <li class="nav-item">
+                                          {% if i.feedback_reply == '' %}
+                                          <button data-toggle="modal" data-target="#exampleModalguest-{{forloop.counter}}" type="button" class="btn text-danger">
+                                          <i class="fa fa-reply" aria-hidden="true"></i>
+                                          </button>
+                                          {% else %}
+                                          <button type="button" class="btn text-danger">
+                                          <i class="fa fa-reply" aria-hidden="true"></i>
+                                          </button>
+                                          {% endif %}
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              {% endfor %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+              </div>
+           </div>
+        </div>
+     </div>
+    </div>
+    
+  </div>
+
+
+</div>
+
+<footer>
+  <p>Copyright © 2020 Dreamguys.</p>
+</footer>
+
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+{% for i in teacher_feedback  %}
+  
+
+  
+<div class="modal fade" id="exampleModalteacher-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Reply FeedBack</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method='post' action="{% url 'hod_feedback_teacher_reply' %}">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="reply-message" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="reply-message" name='Reply'></textarea>
+            <input type="hidden" name="id" value="{{ i.id }}">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% for i in staff_feedback  %}
+  
+
+  
+<div class="modal fade" id="exampleModalstaff-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Reply FeedBack</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method='post' action="{% url 'hod_feedback_staff_reply' %}">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="reply-message" class="col-form-label">Message:</label>
+            <input type="hidden" name="id" value="{{ i.id }}">
+            <textarea class="form-control" id="reply-message"  name='Reply'></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% for i in guest_feedback  %}
+  
+
+  
+<div class="modal fade" id="exampleModalguest-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Reply FeedBack</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method='post' action="{% url 'hod_feedback_guest_reply' %}">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="reply-message" class="col-form-label">Message:</label>
+            <input type="hidden" name="id" value="{{ i.id }}">
+
+            <textarea class="form-control" id="reply-message"  name='Reply'></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+<!-- Modal Staff-->
+{% comment %}  {% endcomment %}

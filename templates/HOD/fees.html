@@ -1,0 +1,83 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Fees</h3>
+          <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+              <li class="breadcrumb-item active">Fees</li>
+          </ul>
+        </div>
+         
+        <div class="col-auto text-right float-right ml-auto">
+          
+          <a href="{% url 'fees_history' %}" class="btn btn-outline-primary mr-2"
+            ><i class="fas fa-history"></i>History</a
+          >
+          <a href="{% url 'add_exam_fees_for_all_students' %}" class="btn btn-primary"
+            >Exam Fee <i class="fa fa-plus"></i></a>
+          
+          
+         
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id='table_id' class="table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                   
+                    <th>Total</th>
+                    <th class="text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for student in students %}
+                  <tr>
+                      <td>{{ student.id }}</td>
+                      <td>
+                        <h2 class="table-avatar">
+                        <a href="{% url 'hod_student_detail' student.id %}">{{ student.name }}</a></td>
+                        </h2>
+                      <td>{{ student.total_amount }}</td>
+                      <td>
+                          <div class="dropdown">
+                              <button style="padding: 5px 10px; margin-left: 52%;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-chevron-down"></i>
+
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  {% for fee in student.fees %}
+                                  
+                                      <a class="dropdown-item"  href="{% url 'fees_pay' fee.id %}">>{{fee.id}}  -  {{fee.transaction_id}}  >  {{ fee.amount }} </a>
+                                      
+                                  {% endfor %}
+                              </div>
+                          </div>
+                      </td>
+                  </tr>
+                 {% endfor %}
+              
+                   
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright © 2020 Edumate.X</p>
+  </footer>
+</div>
+
+{% endblock main %}

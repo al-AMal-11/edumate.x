@@ -1,0 +1,37 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<body>
+  <header>
+    <nav class="breadcrumb">
+      <a href="path/to/class">Class</a>
+      <span>Sections</span>
+    </nav>
+  </header>
+  
+  <main class="page-wrapper">
+    <div class="container">
+      <h1 class="page-title">Sections</h1>
+      
+      <div class="card-container">
+        {% for i in section %}
+        <div class="card">
+          <div class="card-body">
+            <i class="fa fa-home"></i>
+            <h2>Section: {{i.Section_Name}}</h2>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" onclick="window.location.href='{% url 'result_el' i.Class_Name.Class_Name i.Section_Name %}'">
+              View Results <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2023 Edumate.X. All rights reserved.</p>
+    </footer>
+  
+  </main>
+  
+ 
+{% endblock main %}

@@ -1,0 +1,115 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="page-title">Student Details</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="">Student</a></li>
+                                <li class="breadcrumb-item active">Student Details</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                         {% for i in staff%}    
+                            <div class="col-md-12">
+                                <div class="about-info">
+                                    
+                                    <h4>About Student</h4>
+                                    <div class="media mt-3">
+                                    
+                                     
+                                        <img src="{{i.staff_photo.url}}" class="mr-3" alt="...">
+                                       
+                                    </div>
+                                     <div class="media-body">
+                                            <ul>
+                                                <li>
+                                                    <span class="title-span">User Name : </span>
+                                                    <span class="info-span">{{i.staff.username}}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title-span">Full Name : </span>
+                                                    <span class="info-span">{{i.staff.first_name}}{{i.staff.last_name}}</span>
+                                                </li>
+                                                
+                                                <li>
+                                                    <span class="title-span">Staff Type : </span>
+                                                    <span class="info-span">{{i.Staff_type.Type_Name}}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title-span">Sallery : </span>
+                                                    <span class="info-span">{{i.staff_sellery}}</span>
+                                                </li>
+                                               
+                                                <li>
+                                                    <span class="title-span">Experience : </span>
+                                                    <span class="info-span">{{i.staff_Experience}}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title-span">Citizen Card Number : </span>
+                                                    <span class="info-span">{{i.CitizenCard_Number}}</span>
+                                                </li>
+                                                
+                                                <li>
+                                                    <span class="title-span">Contact : </span>
+                                                    <span class="info-span">{{i.staff_mobile}}</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title-span">Email : </span>
+                                                    <span class="info-span">{{i.staff.email}}
+                                                           </span>
+                                                </li>
+                                                <li>
+                                                    <span class="title-span">Gender : </span>
+                                                    <span class="info-span">{{i.staff_gender}}</span>
+                                                </li>
+                                                
+                                            </ul>
+                                           
+                                        </div>
+                                        <div class="row mt-3">
+                                         <div class="col-md-12">
+                                            <p>{{i.staff.bio}} </p>
+                                         </div>
+                                        </div>
+                                     
+                                    {% comment %} <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p>Hello I am Daisy Parks. Lorem Ipsum is simply dummy text of the printing
+                                                and typesetting industry, simply dummy text of the printing and
+                                                typesetting industry.</p>
+                                        </div>
+                                    </div> {% endcomment %}
+                                  
+                                    <div class="row mt-2">
+                                        <div class="col-md-12">
+                                            <h5>Address</h5>
+                                            <p>{{i.staff_address}}</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>    
+                         {% endfor %} 
+                           
+                        </div>
+                        
+                     
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>Copyright © 2020 Edumate.</p>
+            </footer>
+
+        </div>
+
+{% endblock main %}
+

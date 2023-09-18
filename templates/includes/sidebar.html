@@ -1,0 +1,392 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+       <div id="sidebar-menu" class="sidebar-menu">
+         <script>
+            mw.lib.require('fitty');
+            mw.$(document).ready(function () {
+                //fitty(document.getElementById('fitty-logo-1'));
+                //fitty(document.getElementById('fitty-logo-2'));
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Get the current URL
+                const currentUrl = window.location.href;
+                console.log("Current URL:", currentUrl);
+
+                // Get all the menu links
+                const menuLinks = document.querySelectorAll('.menu_element_link');
+
+                // Loop through the links and check if the URL matches
+                menuLinks.forEach(link => {
+                    console.log("Link URL:", link.href);
+                    if (link.href === currentUrl) {
+                        // Add the "active" class to the link
+                        link.classList.add('active');
+                    }
+                });
+            });
+        </script>
+         {%if user.user_type == '1'%}
+
+          <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             
+             <li  class="{% url 'hod_home' as hod_home_url %}{% if request.path == hod_home_url %}active{% endif %}">
+               
+               
+                <a href="{% url 'hod_home' %}" class="menu_element_link"><i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i><span>Daeshboard</span></a>
+             </li>
+
+             <li class="{% url 'hod_home_front' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+               
+               
+                <a href="{% url 'hod_home_front' %}" class="menu_element_link"><i class='fas fa-school'></i> <span>WebSide Front</span></a>
+             </li>
+
+             <li class="{% url 'hod_student' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+                <a href="{% url 'hod_student' %}" class="menu_element_link"><i class="fas fa-user-graduate" aria-hidden="true"></i><span>Students</span></a>
+             </li>
+             <li class="{% url 'hod_teacher' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+                <a href="{% url 'hod_teacher' %}"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i><span>Teachers</span></a>
+             </li >
+
+             <li class="{% url 'hod_staffs' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+                <a href="{% url 'hod_staffs' %}"><i class="fas fa-users" aria-hidden="true"></i><span>Staff</span></a>
+             </li>
+
+         
+
+             <li class="menu-title">
+                <span>Management</span>
+             </li>
+           
+            <li class="{% url 'subjects' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+                <a href="{% url 'subjects' %}"><i class="fas fa-book-reader" aria-hidden="true"></i>
+               <span>Subject</span></a>
+             </li>
+             <li class="{% url 'request_views' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+               <a href="{% url 'request_views' %}"><i class="fa fa-graduation-cap"></i>
+
+              <span>Admission</span></a>
+            </li>
+            <li class="{% url 'contact_views' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+               <a href="{% url 'contact_views' %}">
+                 <i class="fa fa-envelope"></i>
+                 <span>Contact Views</span>
+               </a>
+             </li>
+             
+            <li class="{% url 'hod_news' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+               <a href="{% url 'hod_news' %}">
+                 <i class="fas fa-newspaper" aria-hidden="true"></i>
+                 <span>Add News</span>
+               </a>
+             </li> 
+            <li class="{% url 'sections' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+               <a href="{% url 'sections' %}"><i class="fas fa-book-open" aria-hidden="true"></i>
+              <span>Section</span></a>
+           </li>
+            <li class="{% url 'hod_blogs' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+
+               <a href="{% url 'hod_blogs' %}"><i class="fa fa-newspaper" aria-hidden="true"></i>
+              <span>Blogs</span></a>
+           </li>
+           <li class="{% url 'image_save' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+            <a href="{% url 'image_save' %}"><i class="fa fa-th" aria-hidden="true"></i>
+            <span>Add Image</span></a>
+           </li>
+            <li class="{% url 'hod_notification' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_notification' %} "><i class="fa fa-bell" aria-hidden="true"></i>
+               <span>Notification</span></a>
+            </li>
+            <li class="{% url 'hod_leave_views' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_leave_views' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i>
+               <span>Leave</span></a>
+            </li>
+            <li class="{% url 'hod_feedback' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_feedback' %}"><i class="fa fa-comment" aria-hidden="true"></i>
+                 <span>Feedback</span></a>
+             </li>
+            <li class="{% url 'result' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'result' %}"><i class="fa fa-list-alt" aria-hidden="true"></i>
+               <span>Result</span></a>
+             </li>
+
+            <li class="{% url 'hod_meetings' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_meetings' %}"><i class="fa fa-calendar" aria-hidden="true"></i>
+               <span>Meetings</span></a>
+             </li>
+            <li class="{% url 'hod_attendance_view_student' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_attendance_view_student' %}"><i class="fa fa-address-book" aria-hidden="true"></i>
+              <span>Attendance</span></a>
+             </li>
+                        
+             <li class="{% url 'hostel' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hostel' %}"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
+             </li>
+
+             <li class="{% url 'transport' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'transport' %}"><i class="fas fa-bus"></i> <span>Transport</span></a>
+             </li>
+
+
+
+             <li class="{% url 'fees' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'fees' %}"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
+             </li>
+             <li class="{% url 'salary' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'salary' %}"><i class="fa fa-money-bill"></i> <span>Salerys</span></a>
+             </li>
+             
+             
+             <li class="menu-title">
+
+                <span>Others</span>
+             </li>
+             
+            
+            
+             <li class="{% url 'hod_exam' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_exam' %}"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+             </li>
+             <li class="{% url 'hod_events' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'hod_events' %}"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
+             </li>
+             <li class="{% url 'timetable' as hod_home_front_url %}{% if request.path == hod_home_front_url %}active{% endif %}">
+                <a href="{% url 'timetable' %}"><i class="fas fa-table"></i> <span>Time Table</span></a>
+             </li>
+
+            
+            
+
+          
+          </ul>
+         {%elif user.user_type == '2'%}
+         
+         
+         
+          <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             
+             <li>
+               
+               
+                <a href="{% url 'staff_home' %} "><i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i><span>Daeshboard</span></a>
+             </li>
+             
+              
+
+         
+
+             <li class="menu-title">
+                <span>Management</span>
+             </li>
+            <li>
+               <a href="{% url 'view_salary_s' %}"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+               <span>Salery</span></a>
+             </li>
+            <li>
+                <a href="{% url 'staff_notification' %} "><i class="fa fa-bell" aria-hidden="true"></i>
+               <span>Nothification</span></a>
+            </li>
+            <li>
+                <a href="{% url 'staff_apply_leave' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i>
+               <span>Apply For Leave</span></a>
+            </li>
+            <li>
+                <a href="{% url 'staff_feedback' %}"><i class="fa fa-comment" aria-hidden="true"></i>
+                 <span>Send Feedback</span></a>
+             </li>
+             
+            
+
+            <li>
+                <a href="{% url 'staff_mettings' %}"><i class="fa fa-calendar" aria-hidden="true"></i>
+               <span>Meetings</span></a>
+             </li>
+            
+
+
+            
+           
+         
+          </ul>
+          
+         {% elif user.user_type == '3' %}
+            <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             
+             <li>
+               
+               
+                <a href="{% url 'guest_home' %} "><i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i><span>Daeshboard</span></a>
+             </li>
+             <li>
+                <a href="{% url 'guest_views_attendance' %}"><i class="fa fa-address-book" aria-hidden="true"></i>
+              <span>Attendance</span></a>
+             </li>
+             
+              
+
+         
+
+             <li class="menu-title">
+                <span>Management</span>
+             </li>
+            <li>
+               <a href="{% url 'my_fees' %}"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+               <span>Fees</span></a>
+             </li>
+            <li>
+                <a href="{% url 'guest_Notification' %} "><i class="fa fa-bell" aria-hidden="true"></i>
+               <span>Nothification</span></a>
+            </li>
+            <li>
+               <a href="{% url 'guest_add_blog' %}"><i class="fa fa-newspaper" aria-hidden="true"></i>
+              <span>Blogs</span></a>
+            </li>
+            <li>
+               <a href="{% url 't_blogimage_add' %}"><i class="fa fa-th" aria-hidden="true"></i>
+               <span>Add Image</span></a>
+              </li>
+            <li>
+                <a href="{% url 'guest_apply_leave' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i>
+               <span>Apply For Leave</span></a>
+            </li>
+            <li>
+                <a href="{% url 'guest_feedback' %}"><i class="fa fa-comment" aria-hidden="true"></i>
+                 <span>Send Feedback</span></a>
+             </li>
+             
+            <li>
+                <a href="{% url 'view_result' %}"><i class="fa fa-list-alt" aria-hidden="true"></i>
+               <span>Student Results</span></a>
+             </li>
+
+            <li>
+                <a href="{% url 'guest_mettings' %}"><i class="fa fa-calendar" aria-hidden="true"></i>
+               <span>Meetings</span></a>
+             </li>
+            
+
+
+            
+             <li class="menu-title">
+
+                <span>Others</span>
+             </li>
+             
+             
+            
+             <li>
+                <a href="{% url 'guest_exam' %}"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+             </li>
+            
+             <li>
+                <a href="{% url 'guest_timetable' %} "><i class="fas fa-table"></i> <span>Time Table</span></a>
+             </li>
+
+             
+
+            
+
+          
+          </ul>
+          {%elif user.user_type == '4'%}
+          <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             
+             <li>
+               
+               
+                <a href="{% url 't_home' %} "><i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i><span>Daeshboard</span></a>
+             </li>
+             <li>
+                <a href="{% url 'teacher_take_attandance' %}"><i class="fa fa-address-book" aria-hidden="true"></i>
+              <span>Attendance</span></a>
+             </li>
+             
+              
+
+         
+
+             <li class="menu-title">
+                <span>Management</span>
+             </li>
+            <li>
+               <a href="{% url 'view_salary_t' %}"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
+               <span>Salery</span></a>
+             </li>
+            <li>
+
+                <a href="{% url 'teacher_notification' %} "><i class="fa fa-bell" aria-hidden="true"></i>
+               <span>Nothification</span></a>
+            </li>
+            <li>
+               <a href="{% url 't_blog_add' %}"><i class="fa fa-newspaper" aria-hidden="true"></i>
+              <span>Blogs</span></a>
+           </li>
+           <li>
+            <a href="{% url 'guest_add_blogimage' %}"><i class="fa fa-th" aria-hidden="true"></i>
+            <span>Add Image</span></a>
+           </li>
+            <li>
+                <a href="{% url 'teacher_apply_leave' %}"><i class="fa fa-envelope-open" aria-hidden="true"></i>
+               <span>Apply For Leave</span></a>
+            </li>
+            <li>
+                <a href="{% url 'teacher_feedback' %}"><i class="fa fa-comment" aria-hidden="true"></i>
+                 <span>Send Feedback</span></a>
+             </li>
+             
+            
+            <li>
+                <a href="{% url 't_mettings' %}"><i class="fa fa-calendar" aria-hidden="true"></i>
+               <span>Meetings</span></a>
+             </li>
+            
+
+
+            
+             <li class="menu-title">
+
+                <span>Others</span>
+             </li>
+             
+             
+            
+             <li>
+                <a href="{% url 'exams_t' %}"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+             </li>
+            
+             
+             <li>
+                <a href="{% url 't_timetable' %}"><i class="fas fa-table"></i> <span>Time Table</span></a>
+             </li>
+             
+            
+
+          
+          </ul>
+
+         {% endif %}
+       </div>
+    </div>
+ </div>

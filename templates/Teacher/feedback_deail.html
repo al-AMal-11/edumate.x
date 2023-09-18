@@ -1,0 +1,66 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">FeedBack</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Feedback Views</li>
+                    </ul>
+                </div>
+                <div class="col-sm-14 mx-3">
+                    <div class="card">
+                        <div class="card-header">
+                            All FeedBack
+                        </div>
+                        {% for i in detail %}
+                        <div class="container">
+                            <div class="container-fluid">
+
+                                <hr>
+                                <a href="http://127.0.0.1:8000/login/hod/teacher/detail/{{i.staff_id.id}}"
+                                    class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+                                        src="{{ i.staff_id.admin.profile_pic.url }}" alt="User Image"></a>
+
+                                <div class="container">
+                                    <p style="margin-left: 76%;"> {{i.create_at}} </p>
+
+                                    <p style="margin-left: 50%;">Sub : {{i.feedback_subject}}</p>
+
+                                    <p>Dear Sir</p>
+
+                                    <i style="margin-left:9%;">{{i.feedback}}</i>
+
+                                    <br>
+
+                                    <p style="margin-top: 5px;">Thanks and Regards,</p>
+
+                                    <b>{{i.staff_id.admin.first_name}} {{i.staff_id.admin.last_name}}</b>
+
+                                    <hr>
+                                    <i style='padding-left: 15% ;'>{{i.feedback_reply}}</i>
+                                </div>
+                                <hr>
+
+
+                                
+
+
+                            </div>
+
+
+
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

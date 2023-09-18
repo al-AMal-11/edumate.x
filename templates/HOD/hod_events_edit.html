@@ -1,0 +1,55 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+
+                <div class="page-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="page-title">Add Event</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="event.html">Events</a></li>
+                                <li class="breadcrumb-item active">Add Event</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="post" action="{% url 'events_update' %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="form-title"><span>Event Information</span></h5>
+                                        </div>
+                                         
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Event Name</label>
+                                                <input type="text"  class="form-control" value="{{events.Events_Name}}" name="events_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Event Date</label>
+                                                <input type="date" value="{{ events.Events_Date|date:'Y-m-d' }}" class="form-control" required name="events_date">
+                                                <input type="text" value="{{events.id}}" hidden name="Sid">
+                                            </div>
+                                        </div>
+                                         <label style="margin-left: 18px;" >Events Discription</label>
+                                         <textarea style="margin-left: 18px; margin-bottom: 20px; height: 150px; width: 580px;" class="form-control" name='events_discription' >{{events.Events_Discription}}</textarea>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">Edit Event</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock main %}

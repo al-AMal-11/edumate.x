@@ -1,0 +1,34 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<header>
+  <nav class="breadcrumb">
+    <a href="{% url 'hod_home' %}">Dashboard</a>
+    <span>Class</span>
+  </nav>
+</header>
+
+<main class="page-wrapper">
+  <div class="container">
+    <h1 class="page-title">Classes</h1>
+    
+    <div class="card-container">
+      {% for i in class %}
+      <div class="card">
+        <div class="card-body">
+          <i class="fa fa-home"></i>
+          <h2>Class: {{i.Class_Name}}</h2>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" onclick="window.location.href='{% url 'result_c_s' i.Class_Name %}'">
+            View Results <i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2023 Edumate. All rights reserved.</p>
+</footer>
+{% endblock main %}

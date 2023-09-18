@@ -1,0 +1,113 @@
+{% extends 'BACKEND/base.html' %}
+
+
+{% block main %}
+{% load static %}
+<div class="page-wrapper">
+            <div class="content container-fluid">
+               <div class="page-header">
+                  <div class="row">
+                     <div class="col">
+                        <h3 class="page-title">Front End</h3>
+                        <ul class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+                           <li class="breadcrumb-item active">Front End</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="profile-header">
+                        <div class="row align-items-center">
+                           <div class="col-auto profile-image">
+
+
+                        </div>
+                     </div>
+
+                     
+                     <div class="tab-content profile-tab-cont">
+                        <div class="tab-pane fade show active" id="per_details_tab">
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="card">
+                                    <div class="card-body">
+
+                                    {% for i in detail%}
+                                       <h5 class="card-title d-flex justify-content-between">
+                                          <span>Basic Details</span>
+                                          <a class="btn" href="{% url 'hod_home_front_edit' i.id %}"><i class="far fa-edit mr-1"></i>Edit</a>
+                                       </h5>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">School Name</p>
+                                          <p class="col-sm-9">{{i.name}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">CEO Name</p>
+                                          <p class="col-sm-9">{{i.ceo_name}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">School Email</p>
+                                          <p class="col-sm-9">{{i.contact_email}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">School Phone</p>
+                                          <p class="col-sm-9">{{i.phone_number}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">School Phone</p>
+                                          <p class="col-sm-9">{{i.telephone_number}}</p>
+                                       </div>
+                                       
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Hero Title</p>
+                                          <p class="col-sm-9">{{i.hero_image_title}}</p>
+                                       </div>
+                                       <h5 class="card-title d-flex justify-content-between">
+                                          <span>Social Media Urls</span>
+                                       </h5>   
+
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">FaceBook</p>
+                                          <p class="col-sm-9">{{i.facebook_url}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Twitter </p>
+                                          <p class="col-sm-9">{{i.twitter_url}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Instagram </p>
+                                          <p class="col-sm-9">{{i.instagram_url}}</p>
+                                       </div>
+                                       <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Linkeding</p>
+                                          <p class="col-sm-9">{{i.linkedin_url}}</p>
+                                       </div>
+                                       
+                                        
+                                        <h5 class="card-title d-flex justify-content-between">
+                                          <span>Address</span>
+                                        </h5> 
+                                        <div class="row">
+                                          <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">ADDRESS</p>
+                                          <p class="col-sm-9">{{i.address}}</p>
+                                        </div>
+
+                                    {% endfor %}   
+
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+</div>
+
+{% endblock main %}

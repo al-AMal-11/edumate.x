@@ -1,0 +1,65 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Send Notification</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Notification</li>
+          </ul>
+        </div>
+       
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+          <div class="card-body">
+
+            <h5 class="card-title">Staff Notification</h5>
+
+            <a href="{% url 'hod_notification_staff' %} " class="btn btn-primary">Send Notification</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+          <div class="card-body">
+
+            <h5 class="card-title">Teacher Notification</h5>
+
+            <a href="{% url 'hod_notification_teacher' %} " class="btn btn-primary">Send Notification</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="card">
+          <i class="fas fa-user-graduate" aria-hidden="true"></i>
+          <div class="card-body" style="margin-left: 30%;">
+
+            <h5 class="card-title">Guest Notification</h5>
+
+            <a href="{% url 'hod_notification_guest' %} " class="btn btn-primary">Send Notification</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<footer>
+  <p>Copyright © 2020 Dreamguys.</p>
+</footer>
+
+</div>
+{% endblock main %}

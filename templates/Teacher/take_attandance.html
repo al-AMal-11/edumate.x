@@ -1,0 +1,108 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+
+
+<div class="page-wrapper">
+   <div class="content container-fluid">
+      <div class="page-header">
+         <div class="row align-items-center">
+            <div class="top-nav-search">
+               <form>
+                  <input type="text" class="form-control" placeholder="Search here">
+                  <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+               </form>
+
+            </div>
+            <div class="col-auto text-right float-right ml-auto">
+
+              <i>{{date}}</i>
+              
+            </div>
+         </div>
+      </div>
+     <form action="{% url 't_take_attandance_send' %} " method="post">
+      {% csrf_token %}
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="card card-table">
+               <div class="card-body">
+                  <div class="table-responsive">
+                     <table id="table_id" class="table table-hover table-center mb-0">
+                        <thead>
+                           <tr>
+                              <th>Roll</th>
+                              <th>Name</th>
+                            
+                             
+                              <th class="text-right">Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {% for i in students%}
+                           <tr>
+                              <td>{{i.student_id}}</td>
+                              <td>
+                                 <h2 class="table-avatar">
+                                    <a href="{% url 'hod_student_detail' i.id %}"
+                                       class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+                                          src="{{i.Student_photo.url}}" alt="User Image"></a>
+                                    <a href="{% url 'hod_student_detail' i.id %}">{{i.admin.first_name}}&nbsp;
+                                       {{i.admin.last_name}}</a>
+                                 </h2>
+                              </td>
+
+                             
+                             
+                             
+                              
+                              <td class="text-right">
+                                 <div class="actions">
+                                    <div class="form-check">
+                                     <input type="text" name="student_id" hidden value="{{i.id}}">  
+                                    
+                                     <input type="text" name="student_section_" hidden value="{{i.student_Section.id}}">  
+                                     <style>
+                                       input[type="checkbox"] {
+                                          dsplay: none;
+                                        }
+
+                                       input[type="checkbox"]:checked::before {
+                                          content: "X";
+                                          color: red;
+                                          font-weight: bold;
+                                          font-size: 35px;
+
+                                          }
+                                      </style>
+                                    
+                                      <label for="myCheckbox"><input style="padding: 55px; height: 25px; width: 32px;" type="checkbox" id="myCheckbox" name="Value" value="{{i.id}}">
+                                      </label>
+
+
+                                    </div>
+                                    
+                                   
+                                 </div>
+                              </td>
+                           </tr>
+                           {% endfor %}
+
+
+                        </tbody>
+                     </table>
+                  </div>
+                   
+               </div>
+                   <button type="submit" class="btn btn-primary"> <i
+                     class="fas fa-paper-plane"></i> </button>
+            </div>
+         </div>
+      </div>
+     </form>   
+   </div>
+   <footer>
+      <p>Copyright © 2020 Edumate.</p>
+   </footer>
+</div>
+
+{% endblock %}

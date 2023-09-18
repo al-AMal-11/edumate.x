@@ -1,0 +1,113 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Hostel</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hostel' %}">Hostel</a></li>
+            <li class="breadcrumb-item active">Add Hostel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method='post' action = 'add' enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Basic Details</span></h5>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Hostel Name</label>
+                    <input type="text" class="form-control" / name='hostel_name' required>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-sm-6" >
+                                    <div class="form-group" >
+                                       <label>Staff</label>
+                                       <select class="form-control" name="warden">
+                                          <option>Select Staff</option>
+                                          
+                                          {% for i in  staff %}
+                                            
+                                            
+                                          <option value="{{i.id}}">{{i.staff.username}}</option>
+                                          {% endfor %}
+                                          
+                                       </select>
+                                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" class="form-control" / name='Number' required>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="email" class="form-control" / name='email' required>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Hostel Image</label>
+                            <input type="file" class="form-control" name='hostel_photo' required="required">
+                      </div>
+                </div>
+                <div class="col-12">
+                  <h5 class="form-title"><span>Address</span></h5>
+                </div>
+                <div class="col-12 col-sm-19">
+                    <div class="form-group">
+                      <label>Address</label>
+                      <textarea class="form-control" name='address' required="required"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-19">
+                    <div class="form-group">
+                      <label>Location</label>
+                      <textarea class="form-control" name='location' required="required"></textarea>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <h5 class="form-title"><span>Facilities</span></h5>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                   <label>Select Facilities</label>
+                   <select class="form-control select2" multiple="multiple" name="facilities[]">
+                     {% for facility in facilities %}
+                       <option value="{{ facility.id }}">{{ facility.name }}</option>
+                     {% endfor %}
+                   </select>
+                   </div>
+                </div>
+
+
+           
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Hostel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

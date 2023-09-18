@@ -1,0 +1,58 @@
+{% extends 'Blogs/base.html' %}
+
+{% block Blog %}
+<!-- End breadcrumb -->
+<section id="mu-course-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-course-content-area">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- start course content container -->
+              <div class="mu-course-container mu-blog-archive">
+                <div class="row">
+                  {% for blog in blog_list %}
+                  <div class="col-md-4 col-sm-4">
+                    <article class="mu-blog-single-item">
+                      {% if blog.image %}
+                      <figure class="mu-blog-single-img">
+                        <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.image.url }}" alt="{{ blog.title }}"></a>
+                        <figcaption class="mu-blog-caption">
+                          <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+                        </figcaption>                      
+                      </figure>
+                      {% endif %}
+                      <div class="mu-blog-meta">
+                        <label for="author">Author:</label>
+                        <a href="#author" id="author">{{ blog.author }}</a>
+                        <br>
+                        
+                        <label for="date">Published date:</label>
+                        <a href="#date" id="date">{{ blog.published_date|date:"F d, Y" }}</a>
+                        <br>
+                        <label for="comments">Comments:</label>
+                        <span id="comments"><i class="fa fa-comments-o"></i>{{ blog.comments.count }}</span>
+                        <br>
+                        <label for="views">Views:</label>
+                        <span id="views"><i class="fa fa-eye"></i>{{ blog.views_count }}</span>
+                      </div>
+                      <div class="mu-blog-description">
+                        <p>{{ blog.body|truncatechars:150 }}</p>
+                        <a class="mu-read-more-btn" href="{{ blog.slug }}">Read More</a>
+                      </div>
+                    </article> 
+                  </div>                  
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- end course content container -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

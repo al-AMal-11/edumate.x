@@ -1,0 +1,81 @@
+{% extends 'FontEND/base.html' %}
+
+{% block body %}
+<div class="main-container ">
+   <div id="blog-content-19">
+      <section class="blog-post">
+         <div class="blog-post__title bg--secondary">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                     <h1>{{news.title}}</h1>
+                     <div class="blog-post__author">
+                        <span>
+                        <em>by </em>
+                        </span>
+                        <span class="h6">Admin</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-10 col-sm-offset-1">
+                  <div class=' module module-pictures ' id='module-pictures'  data-mw-title="Picture Gallery" rel="content"   data-type="pictures"   parent-module="pictures"   parent-module-id="module-pictures"  >
+                     <script>mw.lib.require('material_icons');</script>
+                     <div class="text-center">
+                        <div id="mw-gallery-64351bb9b6c68">
+                           <div class="slider" data-paging="false">
+                              <ul class="slides">
+                                
+                                    <li>
+                                       <img class="blog-post__hero box-shadow" alt="{{ news.title }}" src="{{ news.image.url }}">
+                                    </li>
+
+                              
+                                 </ul>
+                                 
+                           </div>
+                        </div>
+                     </div>
+                     
+                  </div>
+               </div>
+               <div class="col-sm-8 col-sm-offset-2">
+                  <div class="edit dropcap" field="content" rel="content">
+                     <div class="element">
+                        <p align="justify" class="element element-over" id="element_1512127253081">{{news.content}} <br></p>
+                     </div>
+                  </div>
+                  <hr>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12 text-center">
+                  <div class="blog-post__share">
+                     <h5>Share this article</h5>
+                     <div class=' module module-sharer '   data-mw-title="Sharer" id="share-post"   data-type="sharer"   parent-module="sharer"   parent-module-id="share-post"  >
+                        <script>mw.lib.require('font_awesome');</script>
+                        <div class="mw-social-share-links">
+                           <a class="btn btn--sm bg--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://templates.microweber.com/dream/doing-more-with-less-a-guide-to-downsized-living">
+                           <span class="btn__text"><i class="socicon-facebook"></i> Share on Facebook</span>
+                           </a>
+                           <a class="btn btn--sm bg--twitter" href="https://twitter.com/intent/tweet?text=Doing more with less: A guide to downsized living&url=https://templates.microweber.com/dream/doing-more-with-less-a-guide-to-downsized-living" target="_blank">
+                           <span class="btn__text"><i class="socicon-twitter"></i> Share on Twitter</span>
+                           </a>
+                           <a class="btn btn--sm bg--googleplus" href="https://plus.google.com/share?url=https://templates.microweber.com/dream/doing-more-with-less-a-guide-to-downsized-living" target="_blank">
+                           <span class="btn__text"><i class="socicon-googleplus"></i> Share on GooglePlus</span>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+      </section>
+   </div>
+</div>
+{% endblock body %}
+   

@@ -1,0 +1,110 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Time Table</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="">Time Table</a>
+            </li>
+            <li class="breadcrumb-item active">Add Time Table</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method='post' action='add'>
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Time Table</span></h5>
+                </div>
+
+              
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Section</label>
+                    <select class="form-control" name="section" required>
+                      <option>Select Section</option>
+                      {% for i in section %}
+                      <option value="{{i.id}}">{{i.Section_Name}} - {{i.Class_Name}}</option>
+        
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Subject</label>
+                    <select class="form-control" name="subject" required>
+                      <option>Select Subject</option>
+                      {% for i in subject %}
+                      <option value="{{i.id}}">{{i.Subject_Section.Class_Name.Class_Name}} - {{i.Subject_Name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Day</label>
+                    <select class="form-control" name="Day" required>
+                      <option>Select Day</option>
+                      <option value="Sunday">Sunday</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                      <option value="Saturday">Saturday</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Off Time</label>
+                    <select class="form-control" name="OffTime" required>
+                      <option>Select ONly When you want OffTime</option>
+                      <option value="1">Off Time</option>
+                      
+                    </select>
+                  </div>
+                </div>
+               
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Start Time</label>
+                    <input type="time" class="form-control" name='start_time' />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Staff Id</label>
+                    <input type="text" class="form-control" name='staff_id' />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>End Time</label>
+                    <input type="time" class="form-control" name='end_time' />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

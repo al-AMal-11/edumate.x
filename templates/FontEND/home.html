@@ -1,0 +1,305 @@
+{% extends 'FontEND/base.html' %}
+
+{% block body %}
+   
+{% load static %}
+   
+<div class="main-container ">
+    <div class="edit" rel="content" field="dream_content" data-layout-container>
+       <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-1"   template="skin-1"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-1"  >
+         <script>
+            mw.lib.require('fitty');
+         </script>
+         <script>
+            mw.$(document).ready(function () {
+                var el = document.getElementById('fitty-module-layouts-1');
+                mw.$('#fitty-module-layouts-1').removeAttr('style');
+                if (el) {
+                    fitty(el);
+                }
+            });
+            
+            mw.$(document).ready(function () {
+                var $window = mw.$(window);
+                var windowWidth = $window.width();
+                var windowHeight = $window.height();
+                var navHeight = mw.$('nav').outerHeight(true);
+            
+                // Disable parallax on mobile
+            
+                if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+                    mw.$('section').removeClass('parallax');
+                }
+            
+                if (windowWidth > 768) {
+                    var parallaxHero = mw.$('.parallax:nth-of-type(1)'),
+                        parallaxHeroImage = mw.$('.parallax:nth-of-type(1) .background-image-holder');
+            
+                    parallaxHeroImage.css('top', -(navHeight));
+                    if (parallaxHero.outerHeight(true) == windowHeight) {
+                        parallaxHeroImage.css('height', windowHeight + navHeight);
+                    }
+                }
+            });
+         </script>
+          <section class="height-100 imagebg cover cover-1 mw-layout-overlay-wrapper parallax nodrop edit safe-mode    " data-overlay="6" field="layout-skin-1-module-layouts-1" rel="module">
+             <div class="background-image-holder" style="background-image: url('{{font.0.hero_image}}');"></div>
+             <div class="mw-layout-overlay"></div>
+             <div class="container pos-vertical-center mw-layout-overlay-container">
+                <div class="row">
+                  <style>
+                     
+                     .logo {
+                        height: 60px;
+                        width: 60px;
+                        border-radius: 50%;
+                        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 40%;
+                        margin-top: 150px;
+                       
+                      }
+                      
+                      .logo img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                      }
+                      .element img {
+                        border-radius: 50%;
+                        border: 4px solid #fff;
+                      }
+                      .element img {
+                        border-radius: 50%;
+                        border: 4px solid #fff;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                      }
+                      .element img {
+                        border-radius: 50%;
+                        border: 4px solid #fff;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                        transition: all 0.3s ease;
+                      }
+                      
+                      .element img:hover {
+                        transform: scale(1.1);
+                      }
+                      
+                      
+                      
+                      
+                      
+                  </style>   
+                  <div class="col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3 text-center">
+                     <div class="logo">
+                       <img alt="logo" src="{{ font.0.logo }}">
+                     </div>
+                   </div>
+                   <div class="col-xs-12 text-center">
+                     <div class="allow-drop">
+                        <p class="lead" style="top: 0;">
+                          {{ font.0.name }}                 
+                        </p>
+                     </div>
+                  </div>
+                   
+                   <div class="col-xs-12 text-center">
+                      <div class="allow-drop">
+                         <p class="lead" style="top: 0;">
+                           {{ font.0.hero_image_title }}                 
+                         </p>
+                      </div>
+                   </div>
+                </div>
+                <div class="row">
+                   <div class="col-sm-12 text-center">
+                      <div class="modal-instance modal-video-1">
+                         <!--                    <div class="edit allow-drop" field="layout-skin-1-btn---><!--" rel="module">-->
+                        
+                        {% if font.0.intro != '' %}
+                           
+                        
+                           <div class="element">
+                              <div class=' module module-btn ' id='module-layouts-1-btn'  data-mw-title="Button" text="Watch video"   parent-module-id="module-layouts-1"   parent-module="layouts"   data-type="btn"  >
+                                 <a class="btn btn--primary btn-default " id="btn-module-layouts-1-btn" href="#"  >
+                                 <span class="btn__text">
+                                 Watch video    </span>
+                                 </a>
+                              </div>
+                           </div>
+
+                        {% endif %}
+                              
+                        
+                         <!--                    </div>-->
+                      </div>
+                   </div>
+                </div>
+             </div>
+             
+             
+          </section>
+       </div>
+       <div class='-layout tip module-cat-toggle-titles mt-ready module module module-layouts '   data-mw-title="Layouts" template="titles/skin-3.php"   data-type="layouts"   id="layouts-20220128115657"   parent-module="layouts"   parent-module-id="layouts-20220128115657"  >
+         <section class="section     edit safe-mode nodrop" field="layout-titles-skin-3-layouts-20220128115657" rel="module">
+            <div class="container">
+               <div class="row text-center mb-5 nodrop">
+                  <div class="col-lg-8 mx-auto allow-drop element" id="element_1643369599993">
+                     <img class="element" src="{{font.0.ceo_image}}" id="element_1643369600044" style="height: auto;"><br>‌
+                     <span style="font-size: 18px;">{{font.0.ceo_name}} </span></b><br><b><span style="font-size: 18px;">‌ CEO</span></b><br>‌<br>‌
+                     
+                     <h3 class="element" id="">The future is here and belongs to you. Every dreamer is important for the universe<br>‌</h3>
+                     <p class="element" id=""><span style="font-size: 24px;">Welcome to the official website of </span><br><span style="font-size: 24px;">‌M.E.S  School  </span><br>‌<br><span style="font-size: 18px;">‌I believe that as your are browsing our website, you will gain the perception of how through combining place, people and principles, we create for our students a unique environment. </span><br>‌<br></p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+      
+     
+      
+      
+       <style>
+         /* Center the headings */
+         h2, h6 {
+            text-align: center;
+         }
+         
+         /* Style the icons */
+         
+         
+         .position-absolute {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+         
+         /* Style the feature section */
+         .cloneable {
+            margin-bottom: 20px;
+         }
+         
+         .cloneable h6 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+         }
+         
+         .cloneable p {
+            font-size: 16px;
+         }
+         
+         /* Remove padding from section */
+        
+      </style> 
+       <div class='-layout tip module-cat-toggle-titles mt-ready module module-layouts '   data-mw-title="Layouts" template="titles/skin-1.php"   data-type="layouts"   id="layouts-20220127104819"   parent-module="layouts"   parent-module-id="layouts-20220127104819"  >
+         <section class="section     edit safe-mode nodrop" field="layout-titles-skin-1-layouts-20220127104819" rel="module">
+            <div class="container">
+               <div class="row text-center mb-5 nodrop">
+                  <div class="col-lg-10 mx-auto allow-drop element" id="element_1643279751678">
+                     <h2 class="mb-3 element" id="element_1643279751666">Why we are innovate</h2>
+                     <p class="lead element" id="element_1643279751679">Our school developed a new approach to help children to start their education in a special atmosphere and develop their special abilities</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+      <div class='-layout tip module-cat-toggle-features mt-ready module module-layouts '   data-mw-title="Layouts" template="features/skin-31.php"   data-type="layouts"   id="layouts-20220127104252"   parent-module="layouts"   parent-module-id="layouts-20220127104252"  >
+         <section class="section     edit safe-mode nodrop" field="layout-feature-skin-31-layouts-20220127104252" rel="module">
+            <div class="container">
+               <div class="row mb-3 py-4 text-center text-sm-start d-flex justify-content-center justify-content-lg-between">
+                  <div class="mb-8 cloneable col-lg-6 col-sm-12 col-md-6">
+                     <div class="d-block d-sm-flex">
+                        <div class=" me-sm-5 mb-5 mb-sm-0 mx-auto mx-sm-0 icon-size-36px">
+                           <div class="w-80 mx-auto">
+                              <div class="   rounded-circle square d-flex align-items-center justify-content-center">
+                                 <i class="fa-solid fa-book" style="font-size: 80px !important; color: rgb(19, 82, 0) !important;" id="mw-selector-1643285059168" staticdesign="true"></i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="allow-drop element" id="element_1643279751398">
+                           <h6 class="element" id="element_1643279751402">Small groups in classes</h6>
+                           <p class="element" id="element_1643279751397">Our school has a small classes orientation. There are 7–10 pupils in a class. So all processes are near to private format of education.</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-8 cloneable col-lg-6 col-md-6 col-sm-12">
+                     <div class="d-block d-sm-flex">
+                        <div class=" me-sm-5 mb-5 mb-sm-0 mx-auto mx-sm-0 icon-size-36px">
+                           <div class="w-80 mx-auto">
+                              <div class="   rounded-circle square d-flex align-items-center justify-content-center">
+                                 <i class="fa-solid fa-medal" style="font-size: 80px !important; color: rgb(235, 168, 0) !important;" id="mw-selector-1643285059172" staticdesign="true"></i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="allow-drop element" id="element_1643279751495">
+                           <h6 class="element" id="element_1643279751450">Dayle Sport Trainings</h6>
+                           <p class="element" id="element_1643279751457">All our pupils learn several foreign languages. And most classes of a program are curated by native speakers from differen countries.</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-8 cloneable col-lg-6 col-md-6 col-sm-12">
+                     <div class="d-block d-sm-flex">
+                        <div class=" me-sm-5 mb-5 mb-sm-0 mx-auto mx-sm-0 icon-size-36px">
+                           <div class="w-80 mx-auto">
+                              <div class="   rounded-circle square d-flex align-items-center justify-content-center">
+                                 <i class="fa-solid fa-notes-medical"  style="font-size: 80px !important; color: rgba(58, 157, 0, 0.72) !important;" id="mw-selector-1643285059176" staticdesign="true"></i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="allow-drop element" id="element_1643279751454">
+                           <h6 class="element" id="element_1643279751349">Healthy and Fresh Food </h6>
+                           <p class="element" id="element_1643279751352">A school has a main base education system and provides a set of subjects to each student for separate learning. These classes are held in the extra time</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-8 cloneable col-lg-6 col-md-6 col-sm-12">
+                     <div class="d-block d-sm-flex">
+                        <div class=" me-sm-5 mb-5 mb-sm-0 mx-auto mx-sm-0 icon-size-36px">
+                           <div class="w-80 mx-auto">
+                              <div class="   rounded-circle square d-flex align-items-center justify-content-center">
+                                 <i class="fa-solid fa-face-kiss-wink-heart" style="font-size: 80px !important; color: rgb(235, 1, 1) !important;" id="mw-selector-1643285059180" staticdesign="true"></i>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="allow-drop element" id="element_1643279751577">
+                           <h6 class="element" id="element_1643279751485">Love and Hugs </h6>
+                           <p class="element" id="element_1643279751555">If you understand that some additional class is unsuitable, you can try some another to understand your predisposition.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+ 
+
+      {% include 'FontEND/incluiding/5.html' %}
+       
+       
+       <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-1--11"   template="skin-9"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-1--11"  >
+          <section class="nodrop safe-mode bg--primary cta cta-5 edit    " field="layout-skin-9-module-layouts-1--11" rel="module">
+             <div class="container">
+                <div class="row">
+                   <div class="col-sm-12 text-center allow-drop">
+                      <h4>Education is the most powerful weapon which you can use to change the World</h4>
+                      <br><br>
+                      <div class=' module module-btn ' id='module-layouts-1--11-btn'  data-mw-title="Button" template="bootstrap"   button_style="btn-simple"   text="Lets Talk"   parent-module-id="module-layouts-1--11"   parent-module="layouts"   data-type="btn"  >
+                         <a id="btn-module-layouts-1--11-btn" href="{% url 'contacts_page' %}"  class="btn btn-simple " >
+                         <span class="btn__text">
+                         Lets Talk    </span>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </section>
+       </div>
+    </div>
+    
+</div>
+{% endblock body %}

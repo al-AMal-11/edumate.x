@@ -1,0 +1,86 @@
+{% extends 'BACKEND/base.html' %}
+
+{% block main %}
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Results</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">View Results</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="table_id" class="table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Year And EXAM_TYPES</th>
+                                            <th>Subject</th>
+                                            <th>Marks</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for result in results %}
+                                            <tr>
+                                                <td>{{ result.exam_session.session_year }}  -- {{result.exam_session.exam_type}}</td>
+                                                <td>{{ result.subject.Subject_Name }}</td>
+                                                <td>{{ result.marks_obtained }}</td>
+                                                {% if result.pass_fail_status == True %}
+                                                    <td>Pass</td>
+                                                {% else %}
+                                                    <td>Fail</td>
+                                                {% endif %}
+                                            </tr>
+                                        {% empty %}
+                                            <tr>
+                                                <td colspan="2">No results available.</td>
+                                            </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <td colspan="2"><strong>Total Marks:</strong></td>
+                                            <td><strong>{{ studnet.get_total_marks }}</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><strong>Total Full Marks:</strong></td>
+                                            <td><strong>{{ total_full_mark }}</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan="2"><strong>Percentage:</strong></td>
+                                            <td><strong>{{ studnet.get_percentage|floatformat:3 }}%</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><strong>Total Pass Marks:</strong></td>
+                                            <td><strong>{{ studnet.get_total_pass_mark }}</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><strong>Grade:</strong></td>
+                                            <td><strong>{{ studnet.get_grade }}</strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Copyright © 2023 Edumate.X</p>
+        </footer>
+    </div>
+{% endblock main %}

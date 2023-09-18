@@ -1,0 +1,60 @@
+{% extends 'BACKEND/base.html' %}
+
+{% block main %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Meetings</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Meeting</li>
+                    </ul>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Meetings Table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="table_id" class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Meeting Name</th>
+                                            <th>Meeting Date</th>
+                                            <th>Meeting Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in meeting %}
+                                           
+                                                <tr>
+                                                    <td>{{ i.Meeting_Name }}</td>
+                                                    <td>{{ i.Meeting_Date }}</td>
+                                                    <td>{{ i.Meeting_Type }}</td>
+                                                </tr>
+                                            
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023</p>
+    </footer>
+
+</div>
+{% endblock %}

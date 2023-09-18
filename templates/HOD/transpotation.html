@@ -1,0 +1,62 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Transpotation</h3>
+          <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+              <li class="breadcrumb-item active">Transpotation</li>
+          </ul>
+        </div>
+         
+        <div class="col-auto text-right float-right ml-auto">
+          
+        
+          
+         
+          
+          <a href="{% url 'transport_v2' %}" class="btn btn-primary"
+            ><i class="fa fa-plus"></i
+          ></a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        
+          
+          {% for i in tra %}
+          <div class="card" style="width: 18rem;">
+            <a href="{% url 'transport_R1' i.id %}">
+            
+            <img class="card-img-top" src="{{i.vehicles_photo.url}}" alt="Card image cap">
+            <div class="card-body">
+            </a>
+            <h6> 
+             <i>Vehicle Type :-</i> <i>{{i.vehicle_type}}</i>
+             <i>Vehicle Num :-</i> <i>{{i.vehicle_num}}</i>
+             <i>Vehicle Capcity :-</i> <i>{{i.vehicles_capcity}} </i>
+             <br>
+             <i>Vehicle Driver :-</i> <i>{{i.driver.staff.username}}</i>
+             <i> Driver Number :-</i> <i>{{i.driver.staff_mobile}}</i>
+
+
+            </h6>
+              
+              
+            </div>
+          </div>
+          {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright © 2020 Edumate.X</p>
+  </footer>
+</div>
+
+{% endblock main %}

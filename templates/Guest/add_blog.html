@@ -1,0 +1,95 @@
+{% extends 'BACKEND/base.html' %} 
+
+{% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Blog Post</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'blogs' %}">Blog</a>
+            </li>
+            <li class="breadcrumb-item active">Add Blog Post</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method="post" action='add' enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title">
+                    <span>Blog Post Information</span>
+                  </h5>
+                </div>
+                
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" required name="title" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Body</label>
+                    <textarea required name="body" class="form-control" rows="10"></textarea>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="category" required>
+                      <option>Select Category</option>
+                      {% for category in categories %}
+                      <option value="{{ category.id }}">{{ category.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Tags</label>
+                    <select class="form-control" name="tags" multiple required>
+                      {% for tag in tags %}
+                      <option value="{{ tag.id }}">{{ tag.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Image (optional)</label>
+                    <input type="file" name="image" class="form-control-file">
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Video (optional)</label>
+                    <input type="file" name="video" class="form-control-file">
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Post</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

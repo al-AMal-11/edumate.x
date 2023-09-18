@@ -1,0 +1,116 @@
+{% extends 'FontEND/base.html' %}
+{% load static %}
+ 
+
+{% block body %}
+       
+<div class="main-container ">
+    <div class="edit" rel="content" field="dream_content" data-layout-container>
+       <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-5"   template="skin-68"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-5"  >
+          <section class="height-20 page-title page-title--animate nodrop safe-mode edit" field="layout-skin-68-module-layouts-5" rel="module">
+             <div class="container pos-vertical-center">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1>Our Interesting Blog</h1>
+                        <p class="lead">Explore the latest news, insights, and stories from our school community</p>
+                     </div>
+                     
+                </div>
+             </div>
+          </section>
+       </div>
+    </div>
+    <section class="nodrop">
+       <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+               <div class=' module module-posts '   data-mw-title="Posts List" data-type="posts"   template="skin-2"   id="blog-posts-5"   parent-module="posts"   parent-module-id="blog-posts-5"  >
+                   {% for blog in blog_list %}
+                       <div class="blog-item blog-item-1" itemscope itemtype="http://schema.org/Article">
+                           <a href="{{ blog.slug }}" itemprop="url">
+                               {% if blog.image %}
+                                   <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                               {% endif %}
+                           </a>
+                           <a href="{{ blog.slug }}" itemprop="url">
+                               <h4>{{ blog.title }}</h4>
+                           </a>
+                           <small class="date">{{ blog.published_date }}</small>
+                           <div class="blog-item__author">
+                               <span><em>by</em></span>
+                               <span class="h6">{{ blog.author }}</span>
+                           </div>
+                           <p itemprop="description">{{ blog.body|truncatewords:30 }}</p>
+                           <hr>
+                       </div>
+                   {% endfor %}
+                   <div class="clearfix"></div>
+               </div>
+           </div>
+           
+             <div class="col-md-3 col-md-offset-1 hidden-sm hidden-xs">
+                <div class="edit" field="dream_blog_sidebar" rel="inherit">
+                   <div class="sidebar allow-drop">
+                     <div class="sidebar__widget">
+                        <h6>Search Site</h6>
+                        <hr>
+                        <div class='module module-search' id='module-layouts-5-search' data-mw-title="Search" data-search-type="blog" data-type="search" parent-module="search" parent-module-id="module-layouts-5-search">
+                          <div class="inline-search clearfix margin-bottom-30">
+                            <form method="get" action="{% url 'blogs' %}">
+                              <div class="input-with-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="search" placeholder="Start Searching..." id="search" name="search" value="{{ search_query }}">
+                                <input type="hidden" name="category" value="{{ category_filter }}">
+                                <input type="hidden" name="tag" value="{{ tag_filter }}">
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="sidebar__widget">
+                        <h6>Categories</h6>
+                        <hr>
+                        <div class=' module module-categories '>
+                            <div class="categories-list">
+                                <ul class="link-list">
+                                    {% for category in categories %}
+                                        <li>
+                                            <a href="?category={{ category.name }}">{{ category.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar__widget">
+                        <h6>Tags</h6>
+                        <hr>
+                        <div class=' module module-tags '>
+                            {% for tag in tags %}
+                                |<a href="?tag={{ tag.name }}" class="tag">{{ tag.name }}</a> |
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                      <div class="sidebar__widget">
+                         <h6>About Us</h6>
+                         <hr>
+                         <p>Welcome to Edumate.X school management system website!</p>
+                         <p>We are a dedicated team of students from the same school, led by Mohsin, a talented student from Class 10. Our goal is to create an efficient and user-friendly school management system that simplifies administrative tasks, enhances communication, and improves overall efficiency in schools.</p>
+                         <p>With our system, we aim to provide a comprehensive solution that addresses the needs of students, teachers, parents, and administrators. Our features include student management, attendance tracking, gradebook management, timetable generation, communication tools, and much more.</p>
+                         <p>We understand the importance of a well-organized and streamlined school management system, and we are committed to delivering a reliable and intuitive platform that empowers educational institutions to focus on what matters most: providing quality education to students.</p>
+                         <p>Thank you for visiting our website. We invite you to explore our system and discover how it can benefit your school community. Feel free to contact us if you have any questions or feedback.</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+   
+ </div>
+
+ <script src="{% static 'assets/js/blog_.js' %} "></script> 
+   
+ {% endblock body %}

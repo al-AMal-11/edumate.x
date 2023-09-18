@@ -1,0 +1,162 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">FrontEnd Information</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Deshboard</a></li>
+            <li class="breadcrumb-item active">FrontEnd</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method='post' action = "{% url 'hod_home_front_update' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% for i in detail%}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Basic Details</span></h5>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>School Name</label>
+                    <input type="text" class="form-control" / name='school_name' value="{{i.name}}">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>CEO Name</label>
+                    <input type="text" class="form-control" / name='founder_name' value="{{i.ceo_name}}"  >
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>School Email</label>
+                    <input type="email" class="form-control" / name='school_email' value="{{i.contact_email}} ">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control" / name='phone_number' value="{{i.phone_number}} ">
+                  </div>
+                </div>
+                
+                
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Telphone Number</label>
+                    <input type="text" class="form-control" / name='telephone_number' value="{{i.telephone_number}}">
+                    <input type="text" class="form-control" name='id' value="{{i.name}}" hidden>
+                  </div>
+                </div>
+                
+                
+
+                <div class="col-12">
+                  <h5 class="form-title"><span>Home Page Details</span></h5>
+                </div>
+                <div class="col-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Hero Section Image</label>
+                            <input type="file" class="form-control" name='first_home_page_image' >
+                    </div>
+                </div>
+
+
+                 <div class="col-12 col-sm-12">
+                  <div class="form-group">
+                    <label>Hero Section Title</label>
+                    <input type="text" class="form-control" / name='hero_image_title' value="{{i.hero_image_title}}">
+                  </div>
+                </div>
+
+                 
+
+
+                <div class="col-12">
+                  <h5 class="form-title"><span>About Page Details</span></h5>
+                </div>
+                
+                <div class="col-12 col-sm-12">
+                  <div class="form-group">
+                      <label>About Image 1</label>
+                          <input type="file" class="form-control" name='about_image1' >
+                  </div>
+              </div>
+               
+               
+              <div class="col-12 col-sm-12">
+                  <div class="form-group">
+                      <label>About Image 2</label>
+                          <input type="file" class="form-control" name='about_image1' >
+                  </div>
+              </div>
+                <div class="col-12 col-sm-12">
+                  <div class="form-group">
+                      <label>Vedio for Intro</label>
+                          <input type="file" class="form-control" name='intro_'>
+                    </div>
+                </div>
+                <div class="col-12">
+                  <h5 class="form-title"><span>Social Media Url</span></h5>
+                </div>
+                <div class="col-12 col-sm-19">
+                    <div class="form-group">
+                      <label>Facebook url</label>
+                      <input type="text" class="form-control" / name='facebook_url' value="{{i.facebook_url}}">
+                    </div>
+                </div>
+                <div class="col-12 col-sm-19">
+                  <div class="form-group">
+                    <label>Twitter url</label>
+                    <input type="text" class="form-control" / name='twitter_url' value="{{i.twitter_url}}">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-19">
+                  <div class="form-group">
+                    <label>Instagram url</label>
+                    <input type="text" class="form-control" / name='instagram_url' value="{{i.instagram_url}}">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-19">
+                  <div class="form-group">
+                    <label>Linkedin url</label>
+                    <input type="text" class="form-control" / name='linkedin_url' value="{{i.linkedin_url}}">
+                  </div>
+              </div>
+
+                <div class="col-12">
+                  <h5 class="form-title"><span>Address</span></h5>
+                </div>
+                <div class="col-12 col-sm-19">
+                    <div class="form-group">
+                      <label>School Address</label>
+                      <textarea class="form-control" name='address' >{{i.address}}</textarea>
+                    </div>
+                </div>
+
+
+           
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Edit Details</button>
+                </div>
+              </div>
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

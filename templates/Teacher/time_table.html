@@ -1,0 +1,58 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'BACKEND/assets/css/time_table.css' %}">
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Time Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 't_home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Time Table</li>
+                    </ul>
+                </div>
+        
+            </div>
+            <table>
+            
+            <tbody>
+              
+              {% for i in timetable %}
+                
+
+                <tr>
+                <td id="sub">{{i.Day}}</td>
+                <td id="blank">{{i.start_time}} - {{i.end_time}}</td>
+                <td id="box1">{{i.section.Class_Name}} - {{i.section.Section_Name}}</td>
+                
+                {% if i.Subject != None %}
+                 <td id="box2">{{i.Subject.Subject_Name}}</td>
+                {% else %}
+                  <td id='box2'>OffTime</td> 
+                {% endif %}
+                    
+                
+               
+               
+                </tr>
+             {% endfor %}
+                      
+            </tbody>
+        </table>
+    
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2020 Eduamte.x</p>
+    </footer>
+
+</div>
+      
+
+{% endblock%}
+
+      

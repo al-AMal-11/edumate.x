@@ -1,0 +1,22 @@
+<script>
+
+
+    $(document).ready(function () {
+$("#calendar-simple").simpleCalendar({
+		fixedStartDay: 0, // begin weeks by sunday
+		disableEmptyDetails: true,
+		events: [
+			// generate new event after tomorrow for one hour
+			{% for i in events %}
+			{
+				startDate: new Date("{{i.Events_Date}}").toDateString(),
+                endDate: new Date("{{i.Events_Date}}").toISOString(),
+
+				summary: '[{{i.Events_Name}}] -=- {{i.Events_Discription}}'
+			},
+			{% endfor %}
+		],
+
+	});
+});
+</script>

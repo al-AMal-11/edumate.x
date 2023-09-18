@@ -1,0 +1,126 @@
+{% extends 'FontEND/base.html' %}
+
+{% block body %}
+{% load static %}
+<div class="main-container ">
+   <div id="contacts-17">
+      <div class="edit" rel="content" field="dream_content" data-layout-container>
+         <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-17"   template="skin-41"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-17"  >
+            <section class="height-70 safe-mode bg--dark imagebg page-title page-title--animate mw-layout-overlay-wrapper  nodrop edit    " field="layout-skin-41-module-layouts-17" rel="module" data-overlay="5">
+               <div class="background-image-holder background--bottom">
+                  <div class="background-image-holder" style="background-image: url('{% static 'FontEND/image/extra5.jpeg' %}');"></div>
+               </div>
+               <div class="mw-layout-overlay"></div>
+               <div class="container pos-vertical-center mw-layout-overlay-container">
+                  <div class="row">
+                     <div class="col-sm-10 col-sm-offset-1 text-center allow-drop">
+                        <h3 style='margin-top:69px;'>Get in Touch with Us: "Contact the School Today!"</h3>
+                        <p class="lead">Contact us today to learn more about our school! We're happy to answer any questions you may have and provide you with the information you need to get started.</p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
+         <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-17--1"   template="skin-50"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-17--1"  >
+            <section class="features safe-mode features-10 nodrop edit    " field="layout-skin-50-module-layouts-17--1" rel="module">
+               <div class="feature bg--white col-md-4 text-center allow-drop cloneable element">
+                  <i class="fa-regular fa-map-location-dot fa-2xl"></i>
+                  <h4 class="element">Drop on in</h4>
+                  <p class="element">
+                      {{font.0.address}}    <br> Nepal        
+                  </p>
+               </div>
+               <div class="feature bg--secondary col-md-4 text-center allow-drop cloneable element" id="element_1558613623708">
+                  <i class="fa-solid fa-phone-volume fa-2xl"></i>
+                  <h4 class="element">Give us a call</h4>
+                  <p class="element" id="element_1558613623862">
+                     Office: {{font.0.telephone_number}}
+                     <br> Phone: {{font.0.phone_number}}
+                  </p>
+               </div>
+               <div class="feature bg--dark col-md-4 text-center allow-drop cloneable element" id="element_1558613623789">
+                  <i class="fa-solid fa-computer fa-2xl"></i>
+                  <h4 class="element" id="element_1558613623807">Connect online</h4>
+                  <p class="element" id="element_1558613623802">
+                     Email:
+                     <a href="#">{{font.0.contact_email}}</a>
+                     <br> Facebook:
+                     <a href="{{font.0.facebook_url}}">{{font.0.facebook_url}}</a>
+                     <br> Twitter:
+                     <a href="{{font.0.twitter_url}}">{{font.0.twitter_url}}</a>
+                     <br> Instagram:
+                     <a href="{{font.0.instagram_url}}">{{font.0.instagram_url}} </a>
+                     <br> Linkedin:
+                     <a href="{{font.0.linkedin_url}}">{{font.0.linkedin_url}} </a>
+                  </p>
+               </div>
+            </section>
+         </div>
+         <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-17--2"   template="skin-47"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-17--2"  >
+            <section class="nodrop safe-mode edit    " field="layout-skin-47-module-layouts-17--2" rel="module">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-sm-8 col-sm-offset-2">
+                        <div class=' module module-contact-form ' id='module-layouts-17--2-contact-form'  data-mw-title="Contact form" parent-module-id="module-layouts-17--2"   parent-module="layouts"   data-type="contact_form"  >
+                           
+                           <form  method="post" action='save'>
+                              <input type="hidden" value="CQvYejBPV4xfPxgeoD6twy3lhPuEesivkCgEzXFE" name="_token">    <input type="hidden" name="for" value="contact_form">
+                              <input type="hidden" name="for_id" value="module-layouts-17--2-contact-form">
+                              <h4 class="text-center edit" rel="module" field="contact-form-module-layouts-17--2-contact-form">Or reach us right here…</h4>
+                              <div class="input-with-icon col-sm-6">
+                                 <i class="icon-MaleFemale"></i>
+                                 <input type="text" name="first_name" placeholder="First Name" required>
+                              </div>
+                              <div class="input-with-icon col-sm-6">
+                                 <i class="icon-Building"></i>
+                                 <input type="text" name="last_name" placeholder="Last Name" required>
+                              </div>
+                              <div class="input-with-icon col-sm-6">
+                                 <i class="icon-Email"></i>
+                                 <input type="email" name="email" placeholder="Email Address" required>
+                              </div>
+                              <div class="input-with-icon col-sm-6">
+                                 <i class="icon-Phone-2"></i>
+                                 <input type="tel" name="phone" placeholder="Phone Number" required>
+                              </div>
+                             
+                              <div class="col-sm-12">
+                                 <textarea name="message" placeholder="Your Message" rows="8" required></textarea>
+                              </div>
+                              <div class="col-sm-12">
+                                 <div class=' module module-captcha ' id='module-layouts-17--2-contact-form-captcha'  data-mw-title="Captcha" parent-module-id="module-layouts-17--2-contact-form"   parent-module="contact_form"   data-type="captcha"  >
+                                    <div class="mw-ui-row">
+                                       <div class="mw-captcha" style="max-width: 400px; margin: 15px;">
+                                          <div class="form-group">
+                                             <div class="captcha-holder">
+                                                <div class="mw-ui-col" style="width: 100px;">
+                                                   <a href="javascript:;" class="tip" data-tip="Refresh captcha" data-tipposition="top-center">
+                                                   <img onclick="mw.tools.refresh_image(this);" onerror="this.onerror=null;mw.tools.refresh_image(this);" class="mw-captcha-img" id="captcha-cap64351c95c5064" src="https://www.templates.microweber.com/dream/api/captcha?w=100&h=60&uid=cap64351c95c506464351c95c5195&rand=3888&id=module-layouts-17--2-contact-form-captcha"/>
+                                                   </a>
+                                                </div>
+                                                <div class="mw-ui-col">
+                                                   <input name="captcha" type="text" required class="mw-captcha-input form-control" placeholder="Security code"/>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <br>
+                              </div>
+                              <div class="col-sm-12">
+                                 <button type="submit" class="btn btn--primary">Get Quote</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
+      </div>
+   </div>
+</div>
+   
+{% endblock body %}
+   

@@ -1,0 +1,66 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Admission Details</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Admission Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Admission Information</h4>
+            <div class="table-responsive">
+              <table class="table table-striped custom-table">
+                <tbody>
+                  <tr>
+                    <td>Student Name:</td>
+                    <td>{{ admission.child_name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Parent Name:</td>
+                    <td>{{ admission.parent_name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td>{{ admission.parent_email }}</td>
+                  </tr>
+                  <tr>
+                    <td>Phone Number:</td>
+                    <td>{{ admission.parent_phone }}</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>Class:</td>
+                    <td>{{ admission.child_grade }}</td>
+                  </tr>
+                  <tr>
+                    <td>Previous School:</td>
+                    <td>{{ admission.child_school }}</td>
+                  </tr>
+                  <tr>
+                    <td>Reason for leaving previous school:</td>
+                    <td>{{ admission.admission_type }}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright © 2023 Edumate.X</p>
+  </footer>
+</div>
+{% endblock main %}

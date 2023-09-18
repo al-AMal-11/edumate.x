@@ -1,0 +1,65 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Admission Request</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Admission Request</li>
+          </ul>
+        </div>
+        
+         
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="table_id"  class="table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Admission Deadline</th>
+                    <th class="text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for i in admission_requests %} 
+                  <tr>
+                    <td>{{i.id}}</td>
+                    <td>
+                      <h2>
+                        <a>{{i.child_name}}</a>
+                      </h2>
+                    </td>
+                    <td>{{i.admission_deadline}}</td>
+                    <td class="text-right">
+                      <div class="actions">
+                        <a href="{% url 'request_views_studnet' i.child_name %}" class="btn btn-sm bg-info-light">
+                          <i class="fas fa-eye"></i>
+                        </a>
+                        
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright © 2023 Edumate.X</p>
+  </footer>
+</div>
+{% endblock main %}

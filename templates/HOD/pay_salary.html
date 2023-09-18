@@ -1,0 +1,63 @@
+{% extends 'BACKEND/base.html' %}
+{% block main %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Pay Salery</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="">
+                            Salery
+                        </a></li>
+                        <li class="breadcrumb-item active">Pay Salery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                       
+                       {% for i in salarry  %}
+                        
+                       
+                        <form method='post' action="{% url 'salary_pay' i.id %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="form-title"><span>Salery Information</span></h5>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Payment Method</label>
+                                        <input type="text" class="form-control" name='payment_method' value='Cash'>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Fees Amount</label>
+                                        <input type="text" class="form-control" name='amount' value='{{i.amount}}'>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">pay</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% endfor %}
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

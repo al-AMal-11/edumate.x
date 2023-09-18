@@ -1,0 +1,83 @@
+{% extends 'BACKEND/base.html' %} 
+{% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Results</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hod_home' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Results</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="table_id" class="table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th>Roll No.</th>
+                    <th>UserName</th>
+                    <th>Student Name</th>
+                    <th>Father's Name</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for student in subject_data %}
+                  <tr>
+                    <td>{{ student.student.student_id }}</td>
+                    <td>{{ student.student.admin.username }}</td>
+                    <td>{{ student.student.admin.first_name }} {{ student.student.admin.last_name }}</td>
+                    <td>{{ student.student.student_father_name }}</td>
+                    <td>
+                      <button class="btn btn-primary" data-toggle="collapse" data-target="#student{{ student.student.id }}">View Results</button>
+                    </td>
+                  </tr>
+                  <tr id="student{{ student.student.id }}" class="collapse">
+                    <td colspan="7">
+                      <div class="table-responsive">
+                        <table id="table_id" class="table table-hover table-center mb-0">
+                          <thead>
+                            <tr>
+                              <th>Subject</th>
+                              <th>Marks Obtained</th>
+                              <th>Percentage</th>
+                              <th>Grade</th>
+                              <th>Pass/Fail</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for result in student.results %}
+                            <tr>
+                              <td>{{ result.subject.Subject_Name }}</td>
+                              <td>{{ result.marks_obtained }}</td>
+                              <td>{{ result.percentage|floatformat:2 }}</td>
+                              <td>{{ result.grade }}</td>
+                              <td>{{result.status}}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <a href="{% url 'result_add' class_name section_name exid %}" class="btn btn-primary">Student Result<i class="fas fa-plus"></i></a>
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock main %}

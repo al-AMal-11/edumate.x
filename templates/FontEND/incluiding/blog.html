@@ -1,0 +1,54 @@
+<div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-1--1"   template="skin-32"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-1--1"  >
+    <section class="height-30 edit safe-mode nodrop    " field="layout-skin-32-module-layouts-1--1" rel="module">
+       <div class="container">
+          <div class="row">
+             <div class="col-sm-8 col-sm-offset-2 text-center allow-drop">
+                <h3> The Learning Hub</h3>
+                <p class="lead">
+                  A Blog for School, Life, Business, and Beyond                
+                </p>
+             </div>
+          </div>
+       </div>
+    </section>
+ </div>
+ <div class='module module module-layouts '   data-mw-title="Layouts" id="module-layouts-1--2"   template="skin-58"   data-type="layouts"   parent-module="layouts"   parent-module-id="module-layouts-1--2"  >
+    <section class="wide-grid masonry nodrop edit    " field="layout-skin-58-module-layouts-1--2" rel="module">
+       <div class=' module module-posts ' id='module-layouts-1--2-posts'  data-mw-title="Posts List" template="skin-7"   parent-module-id="module-layouts-1--2"   parent-module="layouts"   data-type="posts"  >
+          <div class="container">
+             <div class="row">
+                <div class="slider slider--controlsoutside" data-arrows="false" data-paging="true" data-items="3">
+                   <ul class="slides">
+                     {% for blog in blogs %}
+                     <li itemscope >
+                        <a href="blogs/{{ blog.slug }}" itemprop="url">
+                            <div class="card card-3">
+                                <div class="card__image">
+                                 <img class="lazyload" data-src="{{ blog.image.url }}" alt="{{ blog.title }}">
+
+                                </div>
+                                <div class="card__body boxed bg--white">
+                                    <div class="card__title">
+                                        <h5>{{ blog.title }}</h5>
+                                    </div>
+                                    <span>
+                                        <em>
+                                            {% for category in blog.categories.all %}
+                                            <a class="category" href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                            {% endfor %}
+                                        </em>
+                                    </span>
+                                    <small class="date">{{ blog.created_at|date:'Y-m-d H:i:s' }}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                      {% endfor %}
+                      
+                   </ul>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </div>

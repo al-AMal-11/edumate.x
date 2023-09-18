@@ -1,0 +1,99 @@
+{% extends 'BACKEND/base.html' %}
+
+{% block main %}
+
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Rider</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'transport' %}">Transport</a></li>
+            <li class="breadcrumb-item active">Rider / Add</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method="post" action="add">
+              {% csrf_token %}
+
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Basic Details</span></h5>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <select name="name" class="form-control">
+                      {% for student in students %}
+                      <option value="{{ student.id }}">{{ student.admin.username }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Fees</label>
+                    <input type="number" class="form-control" name="fees" value="1000" required>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Route</label>
+                    <select name="route" class="form-control">
+                      {% for route in routes %}
+                      <option value="{{ route.id }}">{{ route.route_name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Stop</label>
+                    <select name="stop" class="form-control">
+                      {% for stop in stops %}
+                      <option value="{{ stop.id }}">{{ stop.stop_name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Pickup Time</label>
+                    <input type="time" class="form-control" name="pickup_time" required>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Dropoff Time</label>
+                    <input type="time" class="form-control" name="dropoff_time" required>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Rider</button>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

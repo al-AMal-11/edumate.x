@@ -1,0 +1,83 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Room</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hostel_r' hid %}">Rooms</a></li>
+            <li class="breadcrumb-item active">Add Room</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method='post' action = 'room' enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Basic Details</span></h5>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Room Number</label>
+                    <input type="number" class="form-control" / name='room_num' required>
+                  </div>
+                </div>
+                
+                
+                
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Capacity</label>
+                    <input type="number" class="form-control" / name='capacity' required>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6" >
+                  <div class="form-group" >
+                    <label>Room Type</label>
+                    <select class="form-control" name="room_type">
+                      <option>Select Type</option>
+                      
+                       <option value="Rank A">Rank A</option>
+                       <option value="Rank B">Rank B</option>
+                       <option value="Rank C">Rank C</option>
+                                         
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Room Fee</label>
+                    <input type="number" class="form-control" / name='fee' required>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Room Image</label>
+                            <input type="file" class="form-control" name='r_photo' required>
+                      </div>
+                </div>
+                
+
+           
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Room</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

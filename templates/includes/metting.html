@@ -1,0 +1,20 @@
+<script>
+
+
+	$(document).ready(function() {
+		$("#calendar-simple").simpleCalendar({
+		  fixedStartDay: 0, // begin weeks by Sunday
+		  disableEmptyDetails: true,
+		  events: [
+			{% for i in meeting %}
+			{
+			  startDate: new Date("{{i.Meeting_Date}}").toDateString(),
+			  endDate: new Date("{{i.Meeting_Date}}").toISOString(),
+			  summary: '{{i.Meeting_Name}}'
+			},
+			{% endfor %}
+		  ]
+		});
+	  });
+	  
+</script>

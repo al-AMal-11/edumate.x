@@ -1,0 +1,84 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Stop</h3>
+          <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Vehicle</a></li>
+              <li class="breadcrumb-item active">Route /Stop</li>
+          </ul>
+        </div>
+         
+        <div class="col-auto text-right float-right ml-auto">
+          
+        
+          
+         
+          {% if hid %}
+          <a href="{% url 'stops_add' hid %}" class="btn btn-primary">
+          <i class="fa fa-plus"></i>
+          </a>
+          <a href="{% url 'add_rider' hid %}" class="btn btn-primary">
+            Riders<i class="fa fa-plus"></i></a>
+          
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id='table_id' class="table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th>Stop Name</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Riders</th>
+                    
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in stop %}
+                  <tr>
+                    <td>{{ i.stop_name }}</td>
+                   
+                    <td>{{ i.latitude }}</td>
+                    <td>{{ i.longitude }}</td>
+                    
+                    <td>
+                      <div class="dropdown">
+                        <button style="padding: 5px 10px; margin-left: 2%;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          {% for rider in i.get_riders %}
+                            <a class="dropdown-item" href="{% url 'hod_student_detail' rider.name.id %}">Class is {{rider.name.student_class}} > {{ rider.name.admin.username }} > Fees {{rider.fees}}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                      
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright © 2020 Eduamte.X</p>
+  </footer>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,67 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add Result</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="">Result</a>
+            </li>
+            <li class="breadcrumb-item active">Add Result</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <form method="post" action="add">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-12">
+                    <h5 class="form-title">
+                      <span>Result Information</span>
+                    </h5>
+                  </div>
+                  <div class="col-12 col-sm-12">
+                    <div class="form-group">
+                      <label>Student</label>
+                      <select class="form-control" name="student" multiple required>
+                        {% for i in student %}
+                        <option value="{{i.id}}">Roll no :- {{i.student_id}} Name :- {{i.admin.first_name}} - {{i.admin.last_name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  {% for i in subject %}
+                  <input type="hidden" name="subject_id" value="{{ i.id }}">
+                  <input type="hidden" name="subject_name" value="{{ i.Subject_Name }}">
+                  <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Full Mark</label>
+                      <input value="{{i.Subject_Name}}" type="text" required name="subject" class="form-control" readonly />
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Mark</label>
+                      <input type="number" required name="marks_{{i.id}}" class="form-control" />
+                    </div>
+                  </div>
+                  {% endfor %}
+                       
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>
+{% endblock main %}

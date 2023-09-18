@@ -1,0 +1,70 @@
+{% load static %}
+<nav class="">
+   <div class="nav-bar" data-fixed-at="200">
+      <div class="nav-module logo-module left">
+         <div class='module module-logo' data-mw-title="Logo" id="logo" template="default" data-alt-logo="true" data-type="logo" parent-module="logo" parent-module-id="logo">
+            <a href="">
+               <script>
+                  mw.lib.require('fitty');
+                  
+                  mw.$(document).ready(function () {
+                      //fitty(document.getElementById('fitty-logo-1'));
+                      //fitty(document.getElementById('fitty-logo-2'));
+                  });
+               </script>
+               <script>
+                  document.addEventListener('DOMContentLoaded', () => {
+                     // Get the current URL
+                     const currentUrl = window.location.href;
+                     console.log("Current URL:", currentUrl);
+                   
+                     // Get all the menu links
+                     const menuLinks = document.querySelectorAll('.menu_element_link');
+                   
+                     // Loop through the links and check if the URL matches
+                     menuLinks.forEach(link => {
+                       console.log("Link URL:", link.href);
+                       if (link.href === currentUrl) {
+                         // Add the "active" class to the link
+                         link.classList.add('active');
+                       }
+                     });
+                   });
+               </script>
+               <style>
+                  #module-menu {
+                     display: flex;
+                     justify-content: flex-end;
+                   }
+                  </style>
+               <span class="mw-ui-col-x">
+                  <div style="position: absolute; top: 0; left: 9px; height: 30px; width: 50px;" class=" logo-dark"><img style="max-width: 100%; height: 40px; margin-top: 12px;" alt="logo" src="{{ font.0.logo }}"></div>
+                  <div style="position: absolute; top: 0; left: 10; height: 35px; width: 55px;" class="logo logo-light"><img style="max-width: 100%; height: 40px; margin-top: 2px;" alt="logo" src="{{ font.0.logo }}"></div>
+               </span>
+            </a>
+         </div>
+      </div>
+      <div class='nav-module menu-module left module module-menu' id='module-menu' data-mw-title="Menu" name="header_menu" template="header" data-type="menu" parent-module="menu" parent-module-id="module-menu">
+         <nav class="nav-main">
+            <ul role="menu" id="" class="menu menu_1 first-child child-0 menu-item-id-2 menu-item-parent-1">
+               <li style="margin-top: 0;" role="menuitem" class="dropdown depth-0" data-item-id="2"><a itemprop="url" data-item-id="2" class="menu_element_link first-child child-0 menu-item-id-2 menu-item-parent-1 depth-0" href="{% url 'home_page' %}">Home</a></li>
+               <li style="margin-top: 0;" role="menuitem" class="dropdown depth-0" data-item-id="11"><a itemprop="url" data-item-id="11" class="menu_element_link first-child child-0 menu-item-id-11 menu-item-parent-1 depth-0" href="{% url 'blogs' %}">Blog</a></li>
+               <li style="margin-top: 0;" role="menuitem" class="depth-0" data-item-id="30"><a itemprop="url" data-item-id="30" class="menu_element_link first-child child-0 menu-item-id-30 menu-item-parent-1 depth-0" href="{% url 'about_page' %}">About</a></li>
+               <li style="margin-top: 0;" role="menuitem" class="depth-0" data-item-id="31"><a itemprop="url" data-item-id="31" class="menu_element_link first-child child-0 menu-item-id-31 menu-item-parent-1 depth-0" href="{% url 'admission' %}">Admission</a></li>
+               <li style="margin-top: 0; margin-bottom: 30px;" role="menuitem" class="dropdown depth-0" data-item-id="36"><a itemprop="url" data-item-id="36" class="menu_element_link first-child child-0 menu-item-id-36 menu-item-parent-1 depth-0" href="{% url 'contacts_page' %}">Contacts</a></li>
+               <li style="margin-top: 0;" role="menuitem" class="depth-0" data-item-id="31"><a itemprop="url" data-item-id="31" class="menu_element_link first-child child-0 menu-item-id-31 menu-item-parent-1 depth-0" href="{% url 'login' %}">Login</a></li>
+            </ul>
+         </nav>
+      </div>
+      <!--end nav module-->
+      <div class="nav-module right-x hidden-xs hidden-sm hidden-md safe-mode dream-phone-text">
+         <span class="nav-function phone-header edit safe-element" rel="global" field="dream_header_phone" style="">
+         Call Creator: +977 9817247074
+         </span>
+      </div>
+   </div>
+   <!--end nav bar-->
+   <div class="nav-mobile-toggle visible-sm visible-xs">
+      <i class="fa-solid fa-bars-staggered"></i>
+   </div>
+</nav>

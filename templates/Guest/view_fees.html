@@ -1,0 +1,93 @@
+{% extends 'BACKEND/base.html' %}
+
+{% block main %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">View Fees</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'guest_home' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Fees</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cloum">
+            <div class="col-sm-15">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="table_id" class="table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Fee Type</th>
+                                        <th>Amount</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                       
+                                        <th>Transaction ID</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for fee in fees %}
+                                    <tr>
+                                        <td>{{ fee.fee_type }}</td>
+                                        <td>{{ fee.amount }}</td>
+                                        <td>{{ fee.month }}</td>
+                                        <td>{{ fee.year }}</td>
+                                        
+                                        <td>{{ fee.transaction_id }}</td>
+                                        <td>
+                                            {% if fee.payed %}
+                                            Paid
+                                            {% else %}
+                                            Not Paid
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-15">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="table_id" class="table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Total Amount Paid</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in paid_fees %}
+                                    <tr>
+                                        <td>{{ student.name }}</td>
+                                        <td>{{ student.total_amount }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Copyright © 2020 Edumate.X</p>
+    </footer>
+
+</div>
+{% endblock main %}

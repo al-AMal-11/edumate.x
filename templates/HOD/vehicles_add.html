@@ -1,0 +1,90 @@
+{% extends 'BACKEND/base.html' %} {% block main %}
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Add vehicles</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'transport' %}">Transport</a></li>
+            <li class="breadcrumb-item active">Add vehicles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form method='post' action = 'add' enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-12">
+                  <h5 class="form-title"><span>Basic Details</span></h5>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Vehicles Type</label>
+                    <input type="text" class="form-control" / name='vehiclesT' required>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Vehicles Number</label>
+                    <input type="text" class="form-control" / name='vehiclesN' required>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label>Vehicles Capcity</label>
+                    <input type="number" class="form-control" / name='vehiclesC' required>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-sm-6" >
+                                    <div class="form-group" >
+                                       <label>Staff</label>
+                                       <select class="form-control" name="driver">
+                                          <option>Select Staff</option>
+                                          
+                                          {% for i in  staff %}
+                                          
+                                          {% if i.Staff_type.Type_Name == 'Driver' %}
+                                            
+                                         
+                                            
+                                            
+                                            
+                                          <option value="{{i.id}}">{{i.staff.username}}</option>
+                                          {% endif %}
+                                          {% endfor %}
+                                          
+                                       </select>
+                                    </div>
+                </div>
+               
+
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Vehicles Image</label>
+                            <input type="file" class="form-control" name='v_photo' required="required">
+                      </div>
+                </div>
+                
+                
+
+           
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Add Vehicles</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

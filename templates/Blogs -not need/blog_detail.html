@@ -1,0 +1,222 @@
+{% extends 'Blogs/base.html' %}
+
+{% block Blog %}
+  <!-- Start search box -->
+  <div id="mu-search">
+    <div class="mu-search-area">      
+      <button class="mu-search-close"><span class="fa fa-close"></span></button>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">            
+            <form class="mu-search-form">
+              <input type="search" placeholder="Type Your Keyword(s) & Hit Enter">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End search box -->
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>Detail</h2>
+           <ol class="breadcrumb">
+            <li><a href="#">Blog</a></li>            
+            <li class="active">{{blog.title}}</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
+ <section id="mu-course-content">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-course-content-area">
+            <div class="row">
+              <div class="col-md-9">
+                <!-- start course content container -->
+                <div class="blog-detail">
+                  <h2>{{ blog.title }}</h2>
+                  <br>
+                  <div class="blog-meta">
+                    <span class="blog-author">{{ blog.author }}</span>
+                    <span class="blog-date">{{ blog.published_date|date:"F j, Y" }}</span>
+                    <span class="blog-views">{{ blog.views_count }} views</span>
+                  </div>
+                  {% if blog.image %}
+                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-image">
+                  {% endif %}
+                  {% if blog.video %}
+                    <video src="{{ blog.video.url }}" controls style="max-width: 100%; height: auto; display: block; margin: 0 auto;" class="blog-video"></video>
+                  {% endif %}
+
+                  <div class="blog-body">
+                    {% for line in blog.body.splitlines %}
+                      {{ line }}<br>
+                    {% endfor %}
+                  </div>
+                  
+                 
+                  
+                  <div class="blog-likes">
+                    <span>{{ blog.views_count }} <i class="fa fa-eye"></i></span>
+                    <span><i class="fa fa-heart"></i>{{ blog.num_likes }}</span>
+                    <span><i class="fa fa-comments-o"></i>{{ blog.num_comment }}</span>
+                    
+                    {% if user.is_authenticated %}
+                      {% if user in blog.like_set.all %}
+                      
+                        <a href="{% url 'blog_unlike' blog.slug %}" style="display: flex; justify-content: flex-end;" class="unlike-button"><i class="fa fa-heart" style="color: red;"></i></a>
+                      {% else %}
+                        <a href="{% url 'blog_like' blog.slug %}" style="display: flex; justify-content: flex-end;" class="like-button"><i class="fa fa-heart-o"></i></a>
+                      {% endif %}
+                    {% else %}
+                       <a href="{% url 'login' %}" style="display: flex; justify-content: flex-end;" class="like-button"><i class="fa fa-heart-o"></i></a>
+                    {% endif %}
+                  </div>
+                  
+                  
+                </div>
+                <!-- end course content container -->
+               
+
+                <!-- start blog comment -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mu-comments-area">
+                     
+                      <div class="comments">
+                        <ul class="commentlist">
+                          <li>
+                            {% if comments %}
+                            <hr>
+                            <h3>{{ comments.count }} Comments:</h3>
+                            {% for comment in comments %}
+                              <div class="media">
+                                <div class="media-body">
+                                  <h4 class="author-name">{{ comment.sender_name }}</h4>
+                                  <span class="comments-date">{{ comment.post_date|date:'F j, Y' }}</span>
+                                  <p>{{ comment.body }}</p>
+                                  {% comment %} <a class="reply-btn" href="#">Reply <span class="fa fa-long-arrow-right"></span></a> {% endcomment %}
+                                </div>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+
+                          </li>
+                          
+                            
+                        </ul>
+                        <!-- comments pagination -->
+                        <nav>
+                          <ul class="pagination comments-pagination">
+                            <li>
+                              <a aria-label="Previous" href="#">
+                                <span class="fa fa-long-arrow-left"></span>
+                              </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                              <a aria-label="Next" href="#">
+                                <span class="fa fa-long-arrow-right"></span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end blog comment -->
+                <!-- start respond form -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="respond">
+                      <h3 class="reply-title">Leave a Comment</h3>
+                      <form method="POST" action={% url 'blog_comment_save' blog.slug %}>
+                        {% csrf_token %}
+                        <p class="comment-notes">
+                          Your email address will not be published. Required fields are marked <span class="required">*</span>
+                        </p>
+                        <p class="comment-form-author">
+                          <label for="author">Name <span class="required">*</span></label>
+                          <input type="text" required="required" size="30" value="" name="author">
+                        </p>
+                        <p class="comment-form-email">
+                          <label for="email">Email <span class="required">*</span></label>
+                          <input type="email" required="required" aria-required="true" value="" name="email">
+                        </p>
+                        
+                        <p class="comment-form-comment">
+                          <label for="comment">Comment</label>
+                          <textarea required="required" aria-required="true" rows="8" cols="45" name="comment"></textarea>
+                        </p>
+                        
+                        <p class="form-submit">
+                          <input type="submit" value="Post Comment" class="mu-post-btn" name="submit">
+                        </p>        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- end respond form -->
+              </div>
+              <div class="col-md-3">
+                <!-- start sidebar -->
+                <aside class="mu-sidebar">
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Categories</h3>
+                    <ul class="mu-sidebar-catg">
+                        {% for category in section %}
+                        <li>
+                            <a href="{% url 'blogs' %}?category={{ category.name }}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                
+                
+                  <!-- end single sidebar -->
+                  <!-- start single sidebar -->
+                 
+                
+                
+                  <!-- end single sidebar -->
+                  <!-- start single sidebar -->
+                  
+                  <!-- end single sidebar -->
+                  <!-- start single sidebar -->
+                  <div class="mu-single-sidebar">
+                    <h3>Tags Cloud</h3>
+                    <div class="tag-cloud">
+                        <div class="blog-tags">
+                            {% for i in tag %}
+                                <a href="{% url 'blogs' %}?{% if category_filter %}category={{ category_filter }}&{% endif %}tag={{ i.name }}" class="blog-tag">{{ i.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                  <!-- end single sidebar -->
+                </aside>
+                <!-- / end sidebar -->
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+{% endblock %}

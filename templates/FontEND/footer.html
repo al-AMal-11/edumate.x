@@ -1,0 +1,90 @@
+<footer class="bg--dark footer-4 nodrop mwjs-dream-footer" style="display:block;">
+    <div class="container edit" field="dream_footer" rel="global">
+       <div class="row">
+          <div class="col-md-3 col-sm-4 allow-drop">
+             <div class=' module module-logo '   data-mw-title="Logo" id="footer-logo"   template="footer"   data-type="logo"   parent-module="logo"   parent-module-id="footer-logo"  >
+                <a href="https://templates.microweber.com/dream/" class="mw-ui-row-nodrop module-logo" style="width: auto;">
+                <span class="mw-ui-col"><span
+                   class="module-logo-text"
+                   style="font-family: 'inherit';font-size:39px">EduMateX</span>
+                </span>
+                </a>
+             </div>
+             <p><em>Our Work To Make &amp; Customers Happy</em></p>
+             <div class=' module module-menu '   data-mw-title="Menu" template="footer"   name="footer_menu"   id="footer_menu"   data-type="menu"   parent-module="menu"   parent-module-id="footer_menu"  >
+                <ul role="menu"  id=""  class="footer__navigation menu_3  menu-root menu-item-id-37 menu-item-parent-3" >
+                   <li role="menuitem" class=" active   depth-0" data-item-id="37" ><a itemprop="url" data-item-id="37" class="menu_element_link active  menu-root menu-item-id-37 menu-item-parent-3 depth-0 "  href="{% url 'home_page' %}"><span>Home</span></a></li>
+                   {% comment %} <li role="menuitem" class="    depth-0" data-item-id="42" ><a itemprop="url" data-item-id="42" class="menu_element_link   first-child child-0 menu-item-id-42 menu-item-parent-3 depth-0 "  href="{% url 'services_page' %}"><span>Sevices</span></a></li> {% endcomment %}
+                   {% comment %} <li role="menuitem" class="    depth-0" data-item-id="41" ><a itemprop="url" data-item-id="41" class="menu_element_link   first-child child-0 menu-item-id-41 menu-item-parent-3 depth-0 "  href="{% url 'blog_page' %}"><span>Blog</span></a></li> {% endcomment %}
+                   <li role="menuitem" class="    depth-0" data-item-id="42" ><a itemprop="url" data-item-id="42" class="menu_element_link   first-child child-0 menu-item-id-42 menu-item-parent-3 depth-0 "  href="{% url 'contacts_page' %}"><span>Contacts</span></a></li>
+                </ul>
+             </div>
+          </div>
+          <div class="col-md-4 col-sm-8 allow-drop">
+             <h6>Recent News</h6>
+             <div class=' module module-posts '   data-mw-title="Posts List" template="skin-5"   id="recent-news-1"   data-show="title"   limit="3"   hide-paging="true"   data-type="posts"   parent-module="posts"   parent-module-id="recent-news-1"  >
+                <div class="">
+                  
+                  {% for i in new %}
+                 
+                   <div class="row tab-post" style="margin-bottom: 10px;">
+                      <div style='margin-left:50px;' class="col-md-10 col-sm-10 col-xs-9">
+                         <a href="{% url 'news_page' i.slug %}" class="tab-post-link">{{i.title}}</a>
+                      </div>
+                   </div>
+                       
+                  {% endfor %}
+                     
+                </div>
+             </div>
+          </div>
+          <div class="col-md-4 col-md-offset-1 col-sm-12 allow-drop">
+             <h6>SUBSCRIBE Us</h6>
+             <p>Get monthly SUBSCRIBE for your School Management websystem</p>
+             <div class=' module module-newsletter '   id="footer-newsletter"   data-type="newsletter"   parent-module="newsletter"   parent-module-id="footer-newsletter"  ></div>
+             <h6>Connect with Us</h6>
+             <div class=' module module-social-links '   data-mw-title="Social Links" id="socials"   data-type="social_links"   parent-module="social_links"   parent-module-id="socials"  >
+               <ul class="social-list">
+                  <li>
+                    <a href="//www.facebook.com/amaothiskian786/" target="_blank" data-toggle="tooltip" data-placement="top" title="Facebook">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//twitter.com/al_AMal_11_" target="_blank" data-toggle="tooltip" data-placement="top" title="Twitter">
+                      <i class="fa-brands fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//wa.me/9779817247074" target="_blank" data-toggle="tooltip" data-placement="top" title="Google plus">
+                     <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="//www.youtube.com/@NoCnima" target="_blank" data-toggle="tooltip" data-placement="top" title="YouTube">
+                      <i class="fa-brands fa-youtube"></i>
+                    </a>
+                  </li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="footer__lower">
+       <div class="container">
+          <div class="row">
+             <div class="col-sm-6 text-center-xs">
+                <span class="type--fine-print"><span class="mw-powered-by"><a href="" title="Website Builder">Website Builder</a> by <a href="" target="_blank" title="Make a website">Mohammed Mohsin </a></span></span>
+             </div>
+             <div class="col-sm-6 text-right text-center-xs">
+                <a href="#top" class="inner-link top-link ">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </a>
+             </div>
+          </div>
+          <!--end of row-->
+       </div>
+       <!--end of container-->
+    </div>
+ </footer>
